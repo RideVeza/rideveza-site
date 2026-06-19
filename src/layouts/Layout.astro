@@ -1,0 +1,73 @@
+---
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  footer?: boolean;
+}
+
+const {
+  title = "Veza — Bussing done different",
+  description = "Experience the future of school bussing—where efficiency meets safety. Veza brings dispatchers, drivers, and guardians together.",
+  // Only the home page shows the footer on live; support/privacy omit it.
+  footer = true,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    {/* Set the reveal flag before paint so [data-reveal] starts hidden (no flash). */}
+    <script is:inline>
+      document.documentElement.classList.add("reveal-on");
+    </script>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/hero-large.png" />
+
+    <!-- Font: Work Sans (the site's typeface, all weights used) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    {footer && <Footer />}
+
+    <script>
+      // Scroll-reveal: reveal each [data-reveal] as it enters the viewport.
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-visible");
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      );
+      document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

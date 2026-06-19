@@ -1,0 +1,117 @@
+---
+// Footer: peach→lavender GRADIENT panel with big rounded top corners.
+// Logo on the left, Support + Privacy Policy links on the right (purple).
+---
+
+<footer class="footer">
+  <div class="footer__panel">
+    <div class="footer__inner">
+      <a href="/" class="footer__brand" aria-label="Veza home">
+        <img src="/veza-logo.svg" alt="Veza" width="180" height="56" />
+      </a>
+
+      <nav class="footer__links" aria-label="Footer">
+        <a href="/support">Support</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Peach → lavender gradient panel, inset from the edges (10px mobile, 20px
+     ≥768), with big rounded top corners. Width = viewport − insets (matches
+     live footer.section: 370/728/1240/1400 at 390/768/1280/1440). */
+  /* 20px space below the floating footer tile (padding so it counts in page
+     height; margin-bottom would collapse into the body). */
+  .footer {
+    display: block;
+    padding-bottom: 20px;
+  }
+
+  .footer__panel {
+    /* Floating tile: 80px gap above (live). */
+    margin-top: 80px;
+    margin-inline: 10px;
+    padding-top: 30px;
+    padding-bottom: 80px;
+    background-image: linear-gradient(
+      -47.0768deg,
+      rgb(253, 236, 230),
+      rgb(249, 233, 253)
+    );
+    border-radius: 30px; /* all four corners */
+  }
+  @media (min-width: 768px) {
+    .footer__panel {
+      margin-inline: 20px;
+      padding-top: 50px;
+      border-radius: 60px;
+    }
+  }
+  @media (min-width: 1000px) {
+    .footer__panel {
+      padding-top: 80px;
+      border-radius: 48px;
+    }
+  }
+  @media (min-width: 1440px) {
+    .footer__panel {
+      border-radius: 96px;
+    }
+  }
+
+  /* Content row centered, capped at the 1224 content width. */
+  /* Content: 1184 max-width + 40px gutter → logo/links inset 40 @1280, 108 @1440
+     (matches live; the page container's 1224/30 was slightly off). */
+  .footer__inner {
+    width: 100%;
+    max-width: 1264px; /* 1184 content + 2×40 gutter */
+    margin-inline: auto;
+    padding-inline: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  @media (min-width: 768px) {
+    .footer__inner { padding-inline: 40px; }
+  }
+  @media (min-width: 768px) {
+    .footer__inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+  }
+
+  .footer__brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .footer__brand:hover {
+    text-decoration: none;
+  }
+  .footer__brand img {
+    height: 56px;
+    width: auto;
+    display: block;
+  }
+
+  .footer__links {
+    display: flex;
+    gap: 20px;
+  }
+
+  /* Link color: live shows slate (72,77,103) for the FIRST link and purple for
+     Privacy at 390; at ≥768 both render purple. Use purple to match desktop. */
+  .footer__links a {
+    color: var(--purple);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27.2px;
+    letter-spacing: -0.3px;
+  }
+</style>

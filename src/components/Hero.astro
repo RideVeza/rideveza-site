@@ -1,0 +1,189 @@
+---
+// Hero: eyebrow pill, H1, sub-paragraph, primary CTA, large hero visual.
+---
+
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="container hero__inner">
+    <div class="hero__pill" data-reveal>
+      <p class="eyebrow">Introducing Veza</p>
+    </div>
+
+    <h1 class="display hero__title" data-reveal style="transition-delay: 0.07s">
+      Bussing done different
+    </h1>
+
+    <p class="lead hero__lead" data-reveal style="transition-delay: 0.14s">
+      Experience the future of school bussing—where efficiency meets safety. Our
+      comprehensive platform brings dispatchers, drivers, and guardians
+      together, ensuring every child's journey is seamless, secure, and smart.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href="mailto:info@rideveza.com"
+      data-reveal
+      style="transition-delay: 0.21s"
+    >
+      Get in Touch
+    </a>
+
+    <div class="hero__visual" data-reveal style="transition-delay: 0.28s">
+      <img
+        src="/images/hero-large.png"
+        alt="The Veza dispatcher dashboard showing routes, runs and real-time updates"
+        width="2880"
+        height="2152"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Section padding steps: 49/60 → 80 → 100 → 117 (mobile→768→1024→1440). */
+  .hero {
+    position: relative;
+    padding-top: 49px;
+    padding-bottom: 60px;
+  }
+  @media (min-width: 768px) {
+    .hero { padding-top: 80px; padding-bottom: 80px; }
+  }
+  @media (min-width: 1000px) {
+    .hero { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1440px) {
+    .hero { padding-top: 117px; padding-bottom: 117px; }
+  }
+
+  /* Lavender/gold gradient panel — a FIXED-height shape that ends around the
+     middle of the hero screenshot (matches live: top offset + per-bp height). */
+  .hero__bg {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    right: 8px;
+    height: 800px;
+    background-image: linear-gradient(
+      -47.0768deg,
+      rgba(243, 172, 61, 0.1) -22.6935%,
+      rgba(192, 169, 255, 0.2) 103.18%
+    );
+    border-radius: 30px;
+    z-index: 0;
+  }
+  @media (min-width: 768px) {
+    .hero__bg { top: 30px; left: 16px; right: 16px; height: 800px; border-radius: 40px; }
+  }
+  @media (min-width: 1000px) {
+    .hero__bg { left: 20px; right: 20px; height: 760px; border-radius: 60px; }
+  }
+  @media (min-width: 1280px) {
+    .hero__bg { left: 25px; right: 25px; }
+  }
+  @media (min-width: 1440px) {
+    .hero__bg { left: 21px; right: 21px; height: 900px; border-radius: 96px; }
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Eyebrow pill: white bg, radius 32px, padding 6px 20px, no border/shadow. */
+  .hero__pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background: var(--white);
+    border-radius: 32px;
+    padding: 6px 20px;
+  }
+  .hero__pill .eyebrow {
+    line-height: 27.2px;
+  }
+
+  .hero__title {
+    margin-top: 32px;
+    max-width: none;
+  }
+
+  .hero__lead {
+    margin-top: 16px;
+    max-width: 770px;
+  }
+  @media (min-width: 1440px) {
+    /* Live narrows the lead at 1440 (same as the CTA lead). */
+    .hero__lead { max-width: 723px; }
+  }
+
+  .hero .btn {
+    margin-top: 29px;
+  }
+
+  /* Hero screenshot wrapper (live framer "Image"): shadow rgba(31,31,31,0.2)
+     0 48px 96px 0; radius STEPS 4/8/16/20 at 390/768/1280/1440; max-width 1224
+     (renders ~1000 wide at 1280, 1224 at 1440). */
+  .hero__visual {
+    position: relative;
+    /* Gap above the screenshot. Intentionally TIGHTER than live (Timothy's call —
+       live has a roomier gap; pulled up ~57px). */
+    margin-top: 24px;
+    width: 100%;
+    /* live widths: 350(390) / 616(768) / 964(1024) / 1000(1280) / 1224(1440+) */
+    max-width: 100%;
+    margin-inline: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: rgba(31, 31, 31, 0.2) 0px 48px 96px 0px;
+  }
+
+  /* The "border" — live renders a 2px #ccccd0 ring via a ::after pseudo-element
+     (inset 0, inherits the wrapper's rounded corners). */
+  .hero__visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgb(204, 202, 208);
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+  }
+  @media (min-width: 768px) {
+    .hero__visual { max-width: 616px; margin-top: 48px; border-radius: 8px; }
+  }
+  @media (min-width: 1000px) {
+    .hero__visual { max-width: 964px; margin-top: 97px; border-radius: 16px; }
+  }
+  @media (min-width: 1280px) {
+    .hero__visual { max-width: 1000px; }
+  }
+  @media (min-width: 1440px) {
+    /* Screenshot breaks out of the 30px container gutter to reach the full
+       1224 content width (live: x=108, w=1224), while the text keeps its gutter. */
+    .hero__visual {
+      border-radius: 20px;
+      max-width: none;
+      width: calc(100% + 60px);
+      margin-inline: -30px;
+    }
+  }
+
+  /* Crop to live's 1.74:1 box, keeping the top (browser chrome), cropping the
+     bottom map — exactly like live (object-fit cover, object-position top). */
+  .hero__visual img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1000 / 575;
+    object-fit: cover;
+    object-position: 50% 0%;
+    display: block;
+  }
+</style>

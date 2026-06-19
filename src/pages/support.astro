@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Support — Veza"
+  description="Get support for Veza. Email support@rideveza.com for enquiries or requests for support."
+  footer={false}
+>
+  <section class="support">
+    <img class="support__bg" src="/images/support-bg.jpg" alt="" aria-hidden="true" />
+    <div class="support__card">
+      <p class="support__text">
+        For enquiries or requests for support,<br />please email
+        <a href="mailto:support@rideveza.com">support@rideveza.com</a>
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Bus photo with white space above it (below the header). */
+  .support {
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 110px);
+    padding: 40px 20px;
+    overflow: hidden;
+  }
+
+  .support__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+
+  /* White card: radius 20, padding 32. */
+  .support__card {
+    position: relative;
+    z-index: 1;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 467px;
+  }
+
+  /* Card text: 24/400, lh36, ls -1px, centered, near-black. */
+  .support__text {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: -1px;
+    text-align: center;
+    color: rgb(31, 31, 31);
+  }
+  /* Force the live 2-line layout on desktop (the <br> sets the break;
+     nowrap stops line 1 from re-wrapping). Mobile wraps naturally. */
+  @media (min-width: 768px) {
+    .support__text {
+      white-space: nowrap;
+    }
+  }
+
+  .support__text a {
+    color: var(--purple);
+  }
+</style>

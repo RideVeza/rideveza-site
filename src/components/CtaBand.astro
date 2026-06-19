@@ -1,0 +1,120 @@
+---
+// CTA band: peach→lavender gradient panel with big rounded top corners.
+// Centered heading, paragraph, primary CTA, then the wide feature image.
+---
+
+<section class="cta">
+  <div class="cta__panel">
+    <div class="container cta__inner">
+      <h2 class="display cta__title" data-reveal>
+        Ready to Transform Your School's Transportation?
+      </h2>
+
+      <p class="lead cta__lead" data-reveal style="transition-delay: 0.07s">
+        Discover how Veza can make school bussing more efficient, safe, and
+        reliable. Get in touch today and take the first step towards smarter
+        school transportation.
+      </p>
+
+      <a
+        class="btn btn-primary"
+        href="mailto:info@rideveza.com"
+        data-reveal
+        style="transition-delay: 0.14s"
+      >
+        Get in Touch
+      </a>
+
+      <div class="cta__visual" data-reveal style="transition-delay: 0.21s">
+        <img
+          src="/images/feature-wide.png"
+          alt="Veza platform across desktop and mobile, keeping every trip connected"
+          width="2356"
+          height="1480"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+  }
+
+  /* Peach → lavender gradient panel, inset from the edges (10px mobile, 20px
+     ≥768 → width = viewport − insets, matching live cta.section), big rounded
+     top. Radii step 30/60/96; padding-top 45/50/80 (390/768/≥1024). */
+  .cta__panel {
+    margin-inline: 10px;
+    padding-top: 45px;
+    background-image: linear-gradient(
+      -47.0768deg,
+      rgb(253, 236, 230),
+      rgb(249, 233, 253)
+    );
+    /* All four corners rounded; overflow hidden clips the image to the
+       rounded bottom corners. */
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .cta__panel {
+      margin-inline: 20px;
+      padding-top: 50px;
+      border-radius: 60px;
+    }
+  }
+  @media (min-width: 1000px) {
+    .cta__panel {
+      padding-top: 80px;
+      border-radius: 96px;
+    }
+  }
+
+  .cta__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cta__title {
+    margin-top: 10px; /* live: panel top → heading = 90 (80 pad + 10) */
+    max-width: 1164px;
+  }
+
+  .cta__lead {
+    margin-top: 16px;
+    max-width: 861px;
+  }
+  @media (min-width: 1440px) {
+    /* Live narrows the lead at 1440 so it wraps to 3 lines. */
+    .cta__lead { max-width: 640px; }
+  }
+
+  .cta .btn {
+    margin-top: 32px; /* live lead → button gap */
+  }
+
+  /* CTA device-mockup image: live shows only the TOP strip — a fixed 1184×322
+     box, object-fit cover, anchored to the top (devices cut off at the bottom). */
+  .cta__visual {
+    margin-top: 66px; /* live 42px + 24px (Timothy: drop image) */
+    /* Break out of the 30px gutter slightly to reach live's 1184 width. */
+    width: calc(100% + 20px);
+    max-width: 1184px;
+    margin-inline: -10px;
+    height: 322px;
+    overflow: hidden;
+  }
+
+  .cta__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 0%;
+    display: block;
+  }
+</style>

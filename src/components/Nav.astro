@@ -1,0 +1,80 @@
+---
+// Sticky top navigation. Logo + "Get in Touch" CTA.
+// Sizes are exact, breakpoint-stepped values extracted from the original site.
+---
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__brand" aria-label="Veza home">
+      <img src="/veza-logo.svg" alt="Veza" width="208" height="65" />
+    </a>
+
+    <a class="btn btn-primary" href="mailto:info@rideveza.com">
+      Get in Touch
+    </a>
+  </div>
+</header>
+
+<style>
+  /* Live header is NOT sticky and has a transparent background. z-index keeps it
+     above full-bleed page backgrounds (e.g. the support page photo). */
+  .nav {
+    position: relative;
+    z-index: 10;
+    background: transparent;
+  }
+
+  /* Live header total: 80 (mobile) → 84 (768) → 90 (desktop). The logo/button
+     are center-aligned to each other but sit LOW in the header (VC ≈ 58 in a
+     90px desktop header, NOT centered). Reproduce with asymmetric padding so
+     the row's vertical center lands at the live position. */
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 13px;
+  }
+  @media (min-width: 768px) {
+    /* button 53 tall: top 25.5 + 53 + bottom 5.5 = 84; VC ≈ 52. */
+    .nav__inner { padding-top: 26px; padding-bottom: 5px; }
+  }
+  @media (min-width: 1000px) {
+    /* VC target 57: (pt + 90 - pb)/2 = 57 → pt - pb = 24. */
+    .nav__inner { padding-top: 30px; padding-bottom: 6px; }
+  }
+  /* Header content row is flush (no gutter) once the viewport reaches the
+     1224 content width — live logo sits at x=108 at 1440 (no inner padding).
+     Logo 65 tall drives the row, so trim padding-top to keep VC ≈ 58. */
+  @media (min-width: 1440px) {
+    .nav__inner { padding-inline: 0; padding-top: 24px; padding-bottom: 0; }
+  }
+
+  .nav__brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .nav__brand:hover {
+    text-decoration: none;
+  }
+
+  /* Logo height matches the live site's breakpoint steps exactly:
+     37 (<768) → 42 (≥768) → 49 (≥1024) → 65 (≥1440). */
+  .nav__brand img {
+    height: 37px;
+    width: auto;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .nav__brand img { height: 42px; }
+  }
+  @media (min-width: 1000px) {
+    .nav__brand img { height: 49px; }
+  }
+  @media (min-width: 1440px) {
+    .nav__brand img { height: 65px; }
+  }
+</style>
