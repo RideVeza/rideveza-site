@@ -1,0 +1,456 @@
+/* Troubleshooting FAQ — plain static pages. No build step, no framework. */
+/* Design language matches rideveza.com: Inter, navy headings, purple brand,
+   very rounded corners, soft pastel callouts, airy whitespace. */
+
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;600;700&display=swap");
+
+:root {
+  --font-display: "Work Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --navy: #030c3b;
+  --ink: #333333;
+  --muted: #6b6f86;
+
+  --purple: #7145e9;
+  --purple-dark: #5a32c4;
+  --lavender: #c0a9ff;
+  --periwinkle: #758bfd;
+  --gold: #f3ac3d;
+
+  --peach: #fdece6;
+  --lilac: #f9e9fd;
+
+  --page-bg: #faf9fc;
+  --card-bg: #ffffff;
+  --border: #ece9f4;
+  --border-strong: #e2def0;
+
+  --radius-card: 22px;
+  --radius-inner: 16px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 1px 2px rgba(3, 12, 59, 0.04), 0 10px 30px rgba(3, 12, 59, 0.05);
+  --shadow-hover: 0 2px 4px rgba(3, 12, 59, 0.06), 0 16px 40px rgba(3, 12, 59, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 28px 18px 72px;
+}
+
+/* ---------- Headers ---------- */
+
+header.page {
+  margin-bottom: 28px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 1.95rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 10px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+/* ---------- Back link (detail pages) ---------- */
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 22px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  color: var(--purple);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.back:hover {
+  background: var(--lilac);
+  border-color: var(--lavender);
+}
+
+/* ---------- Topic cards (troubleshooting index) ---------- */
+
+.topic {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.topic:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-strong);
+}
+
+.topic:active {
+  transform: scale(0.995);
+}
+
+.topic-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.topic-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 6px;
+}
+
+.topic-blurb {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.topic-arrow {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background: var(--lilac);
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.topic:hover .topic-arrow {
+  transform: translateX(3px);
+  background: var(--lavender);
+}
+
+/* ---------- Platform accordions (landing) ---------- */
+
+.group {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 18px 22px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+/* Hide the native disclosure triangle */
+.group-head::-webkit-details-marker {
+  display: none;
+}
+
+.group-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.group-blurb {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.count {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--purple);
+  background: var(--lilac);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.chev {
+  color: var(--muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.group[open] .chev {
+  transform: rotate(-90deg);
+}
+
+.group[open] .group-head {
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Checklist items (landing) ---------- */
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0 22px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+
+.check-item:first-child {
+  border-top: none;
+}
+
+.check-main {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.check {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--lavender);
+  position: relative;
+}
+
+.check::after {
+  content: "\2713";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--lavender);
+}
+
+.check-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.check-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 6px;
+}
+
+.check-body .reason {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.showme {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  white-space: nowrap;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--purple);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.showme:hover {
+  background: var(--purple-dark);
+}
+
+.showme:active {
+  transform: scale(0.98);
+}
+
+.showme .arrow {
+  font-size: 1.05em;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+
+.showme:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Detail page: summary callout ---------- */
+
+.summary {
+  background: var(--lilac);
+  border: 1px solid #f0d9f6;
+  border-radius: var(--radius-card);
+  padding: 18px 22px;
+  margin: 0 0 32px;
+  color: var(--navy);
+  font-size: 1.02rem;
+}
+
+/* ---------- Detail page: steps ---------- */
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  gap: 18px;
+  padding: 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.step .num {
+  counter-increment: step;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background: var(--purple);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.02rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(113, 69, 233, 0.3);
+}
+
+.step .num::before {
+  content: counter(step);
+}
+
+.step .body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.step .body h3 {
+  font-family: var(--font-display);
+  margin: 6px 0 6px;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.step .body p {
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-inner);
+  background: #fff;
+}
+
+/* ---------- Footer ---------- */
+
+footer.page {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Narrow phones ---------- */
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 22px 14px 64px;
+  }
+  h1 {
+    font-size: 1.55rem;
+  }
+  .step {
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
+  }
+  .shot {
+    max-width: 180px;
+  }
+  .check-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .showme {
+    align-self: flex-start;
+  }
+}
