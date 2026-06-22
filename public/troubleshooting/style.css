@@ -743,6 +743,9 @@ footer.page {
   }
   .showme {
     align-self: flex-start;
+    /* Line the button's left edge up with the question/reason text, which is
+       indented past the 24px check circle + the 14px .check-main gap. */
+    margin-left: 38px;
   }
 }
 
