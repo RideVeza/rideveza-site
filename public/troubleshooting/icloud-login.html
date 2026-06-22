@@ -11,13 +11,13 @@
 </head>
 <body>
   <div class="wrap">
-    <a class="back" href="/troubleshooting/passkeys.html">&lsaquo; Back to all questions</a>
+    <a class="back" id="back-link" href="/troubleshooting/passkeys.html">&lsaquo; Back to all questions</a>
 
     <header class="page">
       <h1>Are you signed in to your Apple Account?</h1>
     </header>
 
-    <p class="summary">A passkey is saved in your Apple Account. You must be signed in first.</p>
+    <p class="summary">You must be signed in to your Apple Account. You need this to download the Veza app, and to create your passkey.</p>
 
     <ol class="steps">
       <li class="step">
@@ -73,5 +73,14 @@
 
     <footer class="page">Veza</footer>
   </div>
+  <script>
+    // This page is reached from both the passkey and download-app sections.
+    // Point "Back" at whichever section the visitor came from (default: passkeys).
+    (function () {
+      if ((document.referrer || "").indexOf("/troubleshooting/download-app.html") !== -1) {
+        document.getElementById("back-link").setAttribute("href", "/troubleshooting/download-app.html");
+      }
+    })();
+  </script>
 </body>
 </html>
