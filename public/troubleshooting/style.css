@@ -78,6 +78,32 @@ h1 {
   margin: 0;
 }
 
+.group-note {
+  margin: 0;
+  padding: 16px 22px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.subtitle a,
+.group-note a,
+.step .body a,
+.note a {
+  color: var(--purple);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.subtitle a:hover,
+.group-note a:hover,
+.step .body a:hover,
+.note a:hover {
+  color: var(--purple-dark);
+}
+
 /* ---------- Back link (detail pages) ---------- */
 
 .back {
@@ -174,6 +200,12 @@ h1 {
   box-shadow: var(--shadow-soft);
   margin-bottom: 18px;
   overflow: hidden;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.group:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-strong);
 }
 
 .group-head {
@@ -219,7 +251,11 @@ h1 {
   font-size: 1.3rem;
   line-height: 1;
   transform: rotate(90deg);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.15s ease;
+}
+
+.group:hover .chev {
+  color: var(--purple);
 }
 
 .group[open] .chev {
@@ -347,6 +383,42 @@ h1 {
   font-size: 1.02rem;
 }
 
+/* Info callout (e.g. "Do not have an Apple Account?") — extra space above. */
+.note {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin: 40px 0 0;
+  padding: 18px 22px;
+  background: var(--lilac);
+  border: 1px solid #f0d9f6;
+  border-radius: var(--radius-card);
+  color: var(--navy);
+}
+.note__icon {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  margin-top: 1px;
+  border-radius: var(--radius-pill);
+  background: var(--purple);
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.note p {
+  margin: 0;
+  font-size: 1.02rem;
+}
+.note + .note {
+  margin-top: 14px;
+}
+
 /* ---------- Detail page: steps ---------- */
 
 .steps {
@@ -395,9 +467,9 @@ h1 {
 
 .step .body h3 {
   font-family: var(--font-display);
-  margin: 6px 0 6px;
-  font-size: 1.1rem;
-  letter-spacing: -0.01em;
+  margin: 4px 0 8px;
+  font-size: 1.28rem;
+  letter-spacing: -0.015em;
   font-weight: 600;
   color: var(--navy);
 }
@@ -414,6 +486,207 @@ h1 {
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-inner);
   background: #fff;
+}
+
+/* ---------- Phone screenshots (framed like a device) ---------- */
+
+/* Screenshots are pre-framed (rounded bezel baked in, transparent corners) —
+   display them as-is at the comparison size. */
+.phone {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+}
+
+/* ---------- Check sections ---------- */
+
+.check-sec {
+  margin: 0 0 44px;
+}
+
+.check-sec__head {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin: 0 0 14px;
+}
+
+.check-sec__num {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background: var(--purple);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(113, 69, 233, 0.3);
+}
+
+.check-sec__head h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 4px 0 0;
+}
+
+.check-sec__lead {
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+
+/* Right / wrong comparison */
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Inner tinted panels (live inside a step card, so no border/shadow). */
+.compare-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 18px 14px 20px;
+  border-radius: var(--radius-inner);
+}
+
+.compare-item.good {
+  background: #eef8f1;
+}
+.compare-item.bad {
+  background: #fdeeee;
+}
+
+.verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.verdict.good {
+  color: #1a8f4c;
+}
+.verdict.bad {
+  color: #cc3b3b;
+}
+.verdict .ic {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+.verdict.good .ic {
+  background: #1a8f4c;
+}
+.verdict.bad .ic {
+  background: #cc3b3b;
+}
+
+.compare-cap {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Fix block (how-to under a check) */
+
+.fix {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding: 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+.fix .phone {
+  order: 2;
+  margin-top: 2px;
+}
+.fix__body {
+  order: 1;
+}
+.fix__body h3 {
+  font-family: var(--font-display);
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--navy);
+}
+.fix__body p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.96rem;
+}
+
+/* Numbered phone steps (a row of phones with captions) */
+
+.pstep {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px;
+  margin-bottom: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+.pstep .phone,
+.pstep > .compare {
+  order: 2;
+  margin-top: 2px;
+}
+.pstep__body {
+  order: 1;
+}
+.pstep__n {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--purple);
+  background: var(--lilac);
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin: 0 0 10px;
+}
+.pstep__body h3 {
+  font-family: var(--font-display);
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--navy);
+}
+.pstep__body p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.96rem;
 }
 
 /* ---------- Footer ---------- */
@@ -452,5 +725,22 @@ footer.page {
   }
   .showme {
     align-self: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .compare {
+    grid-template-columns: 1fr;
+  }
+  .fix,
+  .pstep {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .fix .phone,
+  .pstep .phone {
+    max-width: 200px;
+    margin: 0 auto;
   }
 }
