@@ -6,8 +6,7 @@ export default defineConfig({
   // Keep the original Framer URL working; canonical is the clean kebab route.
   redirects: {
     '/Privacy-Policy': '/privacy-policy',
-    // Clean FAQ entry → the static index (so /troubleshooting works in dev too).
+    // Let /troubleshooting (no trailing slash) resolve to the static index in dev.
     '/troubleshooting': '/troubleshooting/index.html',
-    '/faq': '/troubleshooting/index.html',
   },
 });
