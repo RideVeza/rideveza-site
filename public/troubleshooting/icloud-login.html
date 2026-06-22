@@ -77,7 +77,7 @@
     // This page is reached from both the passkey and download-app sections.
     // Point "Back" at whichever section the visitor came from (default: passkeys).
     (function () {
-      if ((document.referrer || "").indexOf("/troubleshooting/download-app.html") !== -1) {
+      if ((document.referrer || "").indexOf("/troubleshooting/download-app") !== -1) {
         document.getElementById("back-link").setAttribute("href", "/troubleshooting/download-app.html");
       }
     })();
