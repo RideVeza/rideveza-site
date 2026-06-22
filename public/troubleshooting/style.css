@@ -5,6 +5,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;600;700&display=swap");
 
 :root {
+  /* Let height: auto animate (for the accordion open/close reveal). */
+  interpolate-size: allow-keywords;
+
   --font-display: "Work Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --navy: #030c3b;
   --ink: #333333;
@@ -264,6 +267,19 @@ h1 {
 
 .group[open] .group-head {
   border-bottom: 1px solid var(--border);
+}
+
+/* Smoothly reveal the section contents when the accordion opens.
+   Uses ::details-content (modern browsers); older browsers simply open
+   instantly, same as before — progressive enhancement, no JS needed. */
+.group::details-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease, content-visibility 0.3s allow-discrete;
+}
+
+.group[open]::details-content {
+  height: auto;
 }
 
 /* ---------- Checklist items (landing) ---------- */
