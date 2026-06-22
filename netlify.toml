@@ -1,5 +1,4 @@
 # Netlify build config for the static Astro site.
-# (Cloudflare Workers deploy via wrangler.jsonc is kept as a staging URL.)
 [build]
   command = "npm run build"
   publish = "dist"
