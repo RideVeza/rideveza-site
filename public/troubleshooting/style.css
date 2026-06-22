@@ -130,6 +130,22 @@ h1 {
   border-color: var(--lavender);
 }
 
+/* Index-page brand mark. Pinned to the measured .back height (41.55px =
+   8px padding + 1px border + 0.92rem x 1.6 line) so the <h1> sits at the
+   same Y as on detail pages — no layout shift when navigating. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  height: 41.55px;
+  margin-bottom: 22px; /* same as .back, so the <h1> lines up across pages */
+}
+
+.brand img {
+  display: block;
+  height: 36px;
+  width: auto;
+}
+
 /* ---------- Topic cards (troubleshooting index) ---------- */
 
 .topic {
