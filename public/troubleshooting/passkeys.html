@@ -80,12 +80,11 @@
       <p class="group-note">You can also read <a href="https://support.apple.com/en-ca/guide/iphone/iphf538ea8d0/ios" target="_blank" rel="noopener">Apple&rsquo;s guide to passkeys</a>.</p>
     </details>
 
-    <!-- TEMP: Android hidden until screenshots are ready. Re-enable this block.
     <details class="group" data-group="android">
       <summary class="group-head">
         <span class="group-title">Android</span>
-        <span class="group-blurb">Google Android devices</span>
-        <span class="count">2 checks</span>
+        <span class="group-blurb">Samsung, Google &amp; other Android</span>
+        <span class="count">4 checks</span>
         <span class="chev" aria-hidden="true">&rsaquo;</span>
       </summary>
       <ul class="checklist">
@@ -93,8 +92,18 @@
           <div class="check-main">
             <span class="check" aria-hidden="true"></span>
             <div class="check-body">
-              <h3>Are you logged in to your Gmail account?</h3>
-              <p class="reason">Your passkey is saved to your Google account. You must be signed in to Gmail first.</p>
+              <h3>Does your phone support passkeys?</h3>
+              <p class="reason">You need Android 9 or newer. Most phones from 2018 onward have this. Older phones cannot make a passkey.</p>
+            </div>
+          </div>
+          <a class="showme" href="/troubleshooting/android-version.html">Show me how <span class="arrow">&rarr;</span></a>
+        </li>
+        <li class="check-item">
+          <div class="check-main">
+            <span class="check" aria-hidden="true"></span>
+            <div class="check-body">
+              <h3>Are you signed in to your Google Account?</h3>
+              <p class="reason">Your passkey is saved to your Google Account. You must be signed in first. This is the account you use for Gmail.</p>
             </div>
           </div>
           <a class="showme" href="/troubleshooting/gmail-login.html">Show me how <span class="arrow">&rarr;</span></a>
@@ -103,15 +112,25 @@
           <div class="check-main">
             <span class="check" aria-hidden="true"></span>
             <div class="check-body">
+              <h3>Is a password manager turned on?</h3>
+              <p class="reason">Your passkey is saved by a password manager, like Google Password Manager or Samsung Pass. One must be turned on. If it was removed or turned off, your passkey cannot be saved.</p>
+            </div>
+          </div>
+          <a class="showme" href="/troubleshooting/android-password-manager.html">Show me how <span class="arrow">&rarr;</span></a>
+        </li>
+        <li class="check-item">
+          <div class="check-main">
+            <span class="check" aria-hidden="true"></span>
+            <div class="check-body">
               <h3>Do you have security on your phone?</h3>
-              <p class="reason">You open a passkey with your fingerprint, face, or screen lock. You need one of these set.</p>
+              <p class="reason">You open a passkey with your fingerprint, face, or screen lock. You need a screen lock set &mdash; a fingerprint or face is optional.</p>
             </div>
           </div>
           <a class="showme" href="/troubleshooting/android-security.html">Show me how <span class="arrow">&rarr;</span></a>
         </li>
       </ul>
+      <p class="group-note">You can also read <a href="https://support.google.com/android/answer/14124480" target="_blank" rel="noopener">Google&rsquo;s guide to passkeys</a>.</p>
     </details>
-    -->
 
     <footer class="page">Veza</footer>
   </div>
