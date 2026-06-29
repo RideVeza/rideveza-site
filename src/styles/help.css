@@ -1,0 +1,125 @@
+/* Veza Guardian — Help / training section. Self-contained: own layout, own
+   chrome, no marketing Nav/Footer. Design language mirrors the troubleshooting
+   section (Inter body, Work Sans display, navy/purple, soft pastel cards). */
+
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;600;700&display=swap");
+
+:root {
+  --font-display: "Work Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --navy: #030c3b;
+  --ink: #333333;
+  --muted: #6b6f86;
+
+  --purple: #7145e9;
+  --purple-dark: #5a32c4;
+  --lavender: #c0a9ff;
+  --lilac: #f9e9fd;
+
+  --page-bg: #faf9fc;
+  --card-bg: #ffffff;
+  --border: #ece9f4;
+  --border-strong: #e2def0;
+
+  --wire: #f3722c; /* callout connector arrows (warm orange, like the template) */
+
+  --radius-card: 22px;
+  --radius-inner: 16px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 1px 2px rgba(3, 12, 59, 0.04), 0 10px 30px rgba(3, 12, 59, 0.05);
+  --shadow-hover: 0 2px 4px rgba(3, 12, 59, 0.06), 0 16px 40px rgba(3, 12, 59, 0.09);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap {
+  max-width: 790px;
+  margin: 0 auto;
+  padding: 24px 18px 72px;
+}
+
+/* ---------- Page chrome ---------- */
+
+header.page {
+  display: flex;
+  align-items: center;
+  min-height: 41.55px;
+  margin-bottom: 28px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--navy);
+}
+
+.brand img { height: 36px; width: auto; display: block; }
+
+footer.page {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Headings & lead copy ---------- */
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin: 0 0 12px;
+}
+
+.overview {
+  font-size: 1.08rem;
+  color: var(--ink);
+  margin: 0 0 24px;
+  text-align: justify;
+}
+
+.overview strong { color: var(--navy); font-weight: 600; }
+
+/* ---------- Screen subsection (Map / Details) ---------- */
+
+.screen {
+  margin-top: 44px;
+}
+
+/* The intro already introduces the first screen, so sit it closer than the
+   44px used to separate one screen section from the next. */
+.screen:first-of-type {
+  margin-top: 24px;
+}
+
+.screen__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin: 0 0 6px;
+}
+
+.screen__lead {
+  font-size: 1.08rem;
+  color: var(--ink);
+  margin: 0;
+}

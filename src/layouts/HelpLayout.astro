@@ -1,0 +1,39 @@
+---
+/*
+ * HelpLayout — shared shell for every /help page.
+ *
+ * Bakes `noindex, nofollow` into <head> in ONE place so a new article can
+ * never accidentally ship as indexable. The section stays unlisted by also
+ * not being linked from the marketing nav and not being in any sitemap.
+ */
+import "../styles/help.css";
+
+const { title, description = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} · Veza Guardian Help</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" href="/favicon.svg" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="page">
+        <a class="brand" href="/help/parents">
+          <img src="/veza-logo.svg" alt="Veza" />
+        </a>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="page">Veza</footer>
+    </div>
+  </body>
+</html>

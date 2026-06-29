@@ -1,0 +1,74 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+
+// Guardian help articles. POC: one live article so far.
+const articles = [
+  {
+    href: "/help/parents/live-map",
+    title: "Tracking the bus",
+    blurb: "Follow your child's bus on the live map and read the arrival time.",
+  },
+];
+---
+
+<HelpLayout
+  title="Parent &amp; Guardian Help"
+  description="Help and training for the Veza Guardian app."
+>
+  <h1>Veza Guardian Help</h1>
+  <p class="overview">
+    Short, visual guides to the Veza Guardian app — what each screen shows and
+    how to use it. Pick a topic to get started.
+  </p>
+
+  <ul class="card-list">
+    {articles.map((a) => (
+      <li>
+        <a href={a.href}>
+          <span class="card-list__title">{a.title}</span>
+          <span class="card-list__blurb">{a.blurb}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</HelpLayout>
+
+<style>
+  .card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .card-list a {
+    display: block;
+    padding: 20px 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+    transition: box-shadow 0.18s ease, transform 0.18s ease;
+  }
+
+  .card-list a:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-1px);
+  }
+
+  .card-list__title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .card-list__blurb {
+    display: block;
+    color: var(--muted);
+  }
+</style>
