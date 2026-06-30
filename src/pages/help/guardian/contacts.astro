@@ -1,0 +1,31 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
+
+const items = [
+  "<strong>Transportation</strong> — the companies that run your child's bus routes. Tap one to call.",
+  "<strong>Schools</strong> — your children's schools. Tap one to call.",
+];
+---
+
+<HelpLayout
+  title="Contacts"
+  description="The phone numbers you might need in Veza Guardian."
+  back="/help/guardian"
+  wide
+>
+  <h1>Contacts</h1>
+
+  <p class="overview">
+    The <strong>Contacts</strong> tab keeps the phone numbers you might need in
+    one place — the companies that run your child's bus routes and your
+    children's schools. Tap any contact to call.
+  </p>
+
+  <Annotated
+    src="/images/help/guardian/contacts-annotated.png"
+    alt="The Veza Guardian Contacts tab, listing transportation companies and schools."
+    ratio="2048 / 3600"
+    items={items}
+  />
+</HelpLayout>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>Are you signed in to your Apple Account? · Veza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="/help/mobile/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" id="back-link" href="/help/mobile/passkeys.html">&lsaquo; Back to all questions</a>
+
+    <header class="page">
+      <h1>Are you signed in to your Apple Account?</h1>
+    </header>
+
+    <p class="summary">You must be signed in to your Apple Account. This lets you download the Veza Mobile App and create your passkey.</p>
+
+    <ol class="steps">
+      <li class="step">
+        <span class="num"></span>
+        <div class="body">
+          <h2>Open the Settings app</h2>
+          <p>Open the Settings app on your iPhone. If you cannot find it, swipe down on the middle of the Home Screen and search for &ldquo;Settings&rdquo;.</p>
+          <img class="phone" src="/images/help/mobile/ios-open-settings.png" alt="iPhone Home Screen with the Settings app icon highlighted" />
+        </div>
+      </li>
+      <li class="step">
+        <span class="num"></span>
+        <div class="body">
+          <h2>Check that you are signed in</h2>
+          <p>Look at the top of the Settings app. The two pictures below show the difference.</p>
+          <div class="compare">
+            <div class="compare-item good">
+              <span class="verdict good"><span class="ic">&#10003;</span> Signed in</span>
+              <img class="phone" src="/images/help/mobile/ios-settings-signedin.png" alt="iPhone Settings showing a name at the top" />
+              <p class="compare-cap">Your <strong>name</strong> is shown at the top.</p>
+            </div>
+            <div class="compare-item bad">
+              <span class="verdict bad"><span class="ic">&times;</span> Not signed in</span>
+              <img class="phone" src="/images/help/mobile/ios-settings-notsignedin.png" alt="iPhone Settings showing Sign in to access your iCloud data" />
+              <p class="compare-cap">It says <strong>&ldquo;Sign in to access your iCloud data&rdquo;</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="num"></span>
+        <div class="body">
+          <h2>If you are not signed in, sign in</h2>
+          <p>Tap <strong>&ldquo;Apple Account&rdquo;</strong> at the top of Settings, then follow the steps to sign in. Your name will appear at the top.</p>
+          <div class="compare">
+            <div class="compare-item">
+              <img class="phone" src="/images/help/mobile/ios-tap-signin.png" alt="iPhone Settings with the Apple Account sign-in row highlighted" />
+              <p class="compare-cap">Tap <strong>&ldquo;Apple Account&rdquo;</strong> at the top of the Settings app.</p>
+            </div>
+            <div class="compare-item">
+              <img class="phone" src="/images/help/mobile/ios-signin.png" alt="Apple Account sign-in screen with two ways to sign in" />
+              <p class="compare-cap">Choose how to sign in. Then follow the steps.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="note">
+      <span class="note__icon" aria-hidden="true">i</span>
+      <p>If you do not have an Apple Account, you can make one for free. On the sign-in screen, tap <strong>&ldquo;Don&rsquo;t have an Apple Account?&rdquo;</strong> and follow the steps. If you need help, please speak to your administrator.</p>
+    </div>
+
+    <footer class="page">Veza</footer>
+  </div>
+  <script>
+    // This page is reached from both the passkey and download-app sections.
+    // Point "Back" at whichever section the visitor came from (default: passkeys).
+    (function () {
+      if ((document.referrer || "").indexOf("/help/mobile/download-app") !== -1) {
+        document.getElementById("back-link").setAttribute("href", "/help/mobile/download-app.html");
+      }
+    })();
+  </script>
+</body>
+</html>

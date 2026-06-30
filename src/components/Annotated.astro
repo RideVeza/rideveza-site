@@ -1,22 +1,5 @@
 ---
-/*
- * Annotated — a pre-numbered screenshot beside a matching numbered legend.
- *
- * The numbers and connector lines are baked into the image (designed in Figma),
- * so this component just displays it and renders the legend whose numbers line
- * up with the ones on the screen. Legend copy stays as editable HTML text.
- *
- * The legend uses plain numerals (not filled circles) so it reads as a list
- * reference and stays visually distinct from the purple anchor circles on the
- * image. A thin divider separates the two columns.
- *
- * Layout: image left, descriptions right on wider screens; stacks on mobile.
- *
- * Props:
- *  - src, alt:  the annotated screenshot
- *  - ratio:     "w / h" of the source image (avoids layout shift)
- *  - items:     [string]  legend lines, in number order (HTML allowed, e.g. <strong>)
- */
+// Screenshot with callouts baked in (Figma), beside a matching numbered legend.
 const { src, alt, ratio = "2040 / 3600", items = [] } = Astro.props;
 ---
 
@@ -43,6 +26,11 @@ const { src, alt, ratio = "2040 / 3600", items = [] } = Astro.props;
     align-items: stretch;
     gap: 28px;
     margin: 16px 0 0;
+    padding: 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
   }
 
   .annotated__shot {
@@ -58,7 +46,6 @@ const { src, alt, ratio = "2040 / 3600", items = [] } = Astro.props;
     height: auto;
   }
 
-  /* ---- Legend: beside the screenshot, behind a thin divider ---- */
   .legend {
     flex: 1 1 0;
     min-width: 0;
@@ -82,9 +69,7 @@ const { src, alt, ratio = "2040 / 3600", items = [] } = Astro.props;
     align-items: flex-start;
   }
 
-  /* Plain purple numeral — light footprint, distinct from the image circles.
-     line-height matches the text's first-line box (1rem * 1.6) so the numeral
-     centers against the bold step text rather than sitting on its baseline. */
+  /* line-height matches the text's first line so the numeral centres on it */
   .legend__num {
     flex: none;
     width: 18px;
@@ -98,13 +83,10 @@ const { src, alt, ratio = "2040 / 3600", items = [] } = Astro.props;
   }
 
   .legend__text { color: var(--ink); }
-  .legend__text strong { color: var(--navy); font-weight: 600; }
 
-  /* ---- Narrow screens: stack the legend under the screenshot ---- */
   @media (max-width: 720px) {
     .annotated {
       flex-direction: column;
-      align-items: stretch;
       gap: 0;
     }
 

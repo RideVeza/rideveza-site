@@ -1,0 +1,60 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
+
+const listItems = [
+  "<strong>Your children</strong> — everyone you're a guardian for, each on a card with their school. Tap a child to open their profile.",
+  "<strong>Quick actions</strong> — jump straight to the child's contacts or care details.",
+  "<strong>Care &amp; pick-up</strong> — equipment the child uses on the bus, plus reminders like needing a guardian at pick-up.",
+];
+
+const profileItems = [
+  "<strong>Quick flags</strong> — markers showing the child has care needs or special pick-up rules.",
+  "<strong>Name &amp; address</strong> — your child's name and home address.",
+  "<strong>Care</strong> — medical needs, equipment and any special instructions for the bus.",
+  "<strong>Contacts</strong> — your child's guardians.",
+  "<strong>Emergency contacts</strong> — who to reach if a guardian can't be.",
+  "<strong>School</strong> — the school your child attends.",
+];
+---
+
+<HelpLayout
+  title="Your children"
+  description="View your children and their details in Veza Guardian."
+  back="/help/guardian"
+  wide
+>
+  <h1>Your children</h1>
+
+  <p class="overview">
+    The <strong>Children</strong> tab shows everyone you're a guardian for, along
+    with their school, care needs and anything the driver should know. Tap a
+    child to see their full profile.
+  </p>
+
+  <section class="screen">
+    <h2 class="screen__title">Children</h2>
+    <p class="screen__lead">
+      Each child has their own card. Tap one to open their profile.
+    </p>
+    <Annotated
+      src="/images/help/guardian/children-annotated.png"XX
+      alt="The Veza Guardian Children tab, listing each child on a card."
+      ratio="2040 / 3600"
+      items={listItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title">Child profile</h2>
+    <p class="screen__lead">
+      Tapping a child opens their profile — care needs, contacts and more.
+    </p>
+    <Annotated
+      src="/images/help/guardian/child-profile-annotated.png"
+      alt="A child's profile in Veza Guardian, showing care, contacts and details."
+      ratio="2040 / 3600"
+      items={profileItems}
+    />
+  </section>
+</HelpLayout>

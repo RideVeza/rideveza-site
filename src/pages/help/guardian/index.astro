@@ -1,0 +1,84 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+
+// Guardian help articles. Ordered: get the app & get in, then using the app.
+const articles = [
+  {
+    href: "/help/guardian/download-app",
+    title: "Downloading the app",
+    blurb: "Get the Veza Guardian App on your phone, and check it'll install.",
+  },
+  {
+    href: "/help/guardian/create-account",
+    title: "Creating your account",
+    blurb: "Set up your account with the email your school has on file.",
+  },
+  {
+    href: "/help/guardian/signing-in",
+    title: "Signing in",
+    blurb: "Sign in with your email and password.",
+  },
+  {
+    href: "/help/guardian/live-map",
+    title: "Tracking the bus",
+    blurb: "Follow your child's bus on the live map and read the arrival time.",
+  },
+  {
+    href: "/help/guardian/children",
+    title: "Your children",
+    blurb: "See your children, their schools, care needs and contacts.",
+  },
+  {
+    href: "/help/guardian/contacts",
+    title: "Contacts",
+    blurb: "Find and call your child's bus companies and schools.",
+  },
+  {
+    href: "/help/guardian/account",
+    title: "Account",
+    blurb: "Manage your profile, password and sign-in.",
+  },
+  {
+    href: "/help/guardian/reset-password",
+    title: "Resetting your password",
+    blurb: "Forgotten your password? Reset it from the Account tab.",
+  },
+];
+---
+
+<HelpLayout
+  title="Parent &amp; Guardian Help"
+  description="Help and training for the Veza Guardian App."
+>
+  <h1>Technical support and how-tos</h1>
+  <span class="eyebrow">Veza Guardian App</span>
+  <p class="subtitle">
+    Short, visual guides to the Veza Guardian App — what each screen shows and
+    how to use it. Pick a topic to get started.
+  </p>
+
+  <ul class="card-list">
+    {articles.map((a) => (
+      <li>
+        <a class="topic" href={a.href}>
+          <div class="topic-body">
+            <h2 class="topic-title">{a.title}</h2>
+            <p class="topic-blurb">{a.blurb}</p>
+          </div>
+          <span class="topic-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</HelpLayout>
+
+<style>
+  /* Card appearance comes from the shared .topic styles in /veza-ui.css. */
+  .card-list {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 18px;
+  }
+</style>

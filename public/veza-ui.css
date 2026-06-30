@@ -1,0 +1,281 @@
+/* Veza shared UI — design tokens, base, and the chrome/components used by BOTH
+   the Guardian help (/help, Astro) and the troubleshooting section
+   (/help/mobile, static HTML). Loaded by each via <link>/@import.
+
+   Outer margins on .back/.steps/.note are intentionally omitted here — each
+   section sets them, since the spacing is contextual. */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@500;600;700&display=swap");
+
+:root {
+  --font-display: "Work Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --navy: #030c3b;
+  --ink: #333333;
+  --muted: #54586b;
+
+  --purple: #7145e9;
+  --purple-dark: #5a32c4;
+  --lavender: #c0a9ff;
+  --lilac: #f9e9fd;
+  --lilac-border: #f0d9f6;
+
+  --page-bg: #faf9fc;
+  --card-bg: #ffffff;
+  --border: #ece9f4;
+  --border-strong: #e2def0;
+
+  --radius-card: 22px;
+  --radius-inner: 16px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 1px 2px rgba(3, 12, 59, 0.04), 0 10px 30px rgba(3, 12, 59, 0.05);
+  --shadow-hover: 0 2px 4px rgba(3, 12, 59, 0.06), 0 16px 40px rgba(3, 12, 59, 0.09);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; }
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 28px 18px 72px;
+}
+
+footer.page {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 1.95rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 10px;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin: -4px 0 8px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+/* Consistent emphasis everywhere — navy semibold, regardless of the
+   surrounding text colour. */
+strong { font-weight: 600; color: var(--navy); }
+
+/* ---------- Back pill (each section sets its own margin) ---------- */
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--card-bg);
+  border: 1px solid var(--border-strong);
+  color: var(--purple);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.back:hover {
+  background: var(--lilac);
+  border-color: var(--lavender);
+}
+
+/* ---------- Step-by-step flow (each section sets the list's outer margin) ---------- */
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.step {
+  display: flex;
+  gap: 18px;
+  padding: 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.step .num {
+  counter-increment: step;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background: var(--purple);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.02rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(113, 69, 233, 0.3);
+}
+
+.step .num::before { content: counter(step); }
+
+.step .body { flex: 1 1 auto; min-width: 0; }
+
+.step .body :is(h2, h3) {
+  font-family: var(--font-display);
+  margin: 4px 0 8px;
+  font-size: 1.28rem;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.step .body p { margin: 0 0 16px; color: var(--ink); }
+
+/* Phone screenshot — device bezel baked into the image. */
+.phone { display: block; width: 100%; max-width: 280px; }
+
+@media (max-width: 480px) {
+  .wrap { padding: 22px 14px 64px; }
+  h1 { font-size: 1.55rem; }
+  .step { flex-direction: column; gap: 14px; padding: 20px; }
+}
+
+/* ---------- Note / tip callout (each section sets its own margin) ---------- */
+
+.note {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin: 0;
+  padding: 18px 22px;
+  background: var(--lilac);
+  border: 1px solid var(--lilac-border);
+  border-radius: var(--radius-card);
+  color: var(--navy);
+}
+
+.note__icon {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  margin-top: 1px;
+  border-radius: var(--radius-pill);
+  background: var(--purple);
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note p { margin: 0; font-size: 1.02rem; }
+.note + .note { margin-top: 14px; }
+
+/* Links inside steps and notes. */
+.step .body a,
+.note a {
+  color: var(--purple);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.step .body a:hover,
+.note a:hover { color: var(--purple-dark); }
+
+/* ---------- Topic cards (landing pages; each section sets the gap) ---------- */
+
+.topic {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.topic:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-strong);
+}
+
+.topic:active { transform: scale(0.995); }
+
+.topic-body { flex: 1 1 auto; min-width: 0; }
+
+.topic-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 6px;
+}
+
+.topic-blurb {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.topic-arrow {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background: var(--lilac);
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.topic:hover .topic-arrow {
+  transform: translateX(3px);
+  background: var(--lavender);
+}

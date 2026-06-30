@@ -1,0 +1,514 @@
+/* Troubleshooting FAQ — plain static pages. No build step, no framework. */
+/* Design language matches rideveza.com: Inter, navy headings, purple brand,
+   very rounded corners, soft pastel callouts, airy whitespace. */
+
+/* Shared tokens, base, and components (.back / .steps / .note / .phone) come
+   from /veza-ui.css. This file only holds what's unique to troubleshooting. */
+@import url("/veza-ui.css");
+
+:root {
+  /* Let height: auto animate (for the accordion open/close reveal). */
+  interpolate-size: allow-keywords;
+}
+
+/* ---------- Headers ---------- */
+
+header.page {
+  margin-bottom: 28px;
+}
+
+/* .subtitle and .eyebrow appearance come from /veza-ui.css. */
+
+.group-note {
+  margin: 0;
+  padding: 16px 22px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.subtitle a,
+.group-note a {
+  color: var(--purple);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.subtitle a:hover,
+.group-note a:hover {
+  color: var(--purple-dark);
+}
+
+/* ---------- Back link (detail pages) — appearance from /veza-ui.css ---------- */
+
+.back { margin-bottom: 22px; }
+
+/* Index-page brand mark. Pinned to the measured .back height (41.55px =
+   8px padding + 1px border + 0.92rem x 1.6 line) so the <h1> sits at the
+   same Y as on detail pages — no layout shift when navigating. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  height: 41.55px;
+  margin-bottom: 22px; /* same as .back, so the <h1> lines up across pages */
+}
+
+.brand img {
+  display: block;
+  height: 36px;
+  width: auto;
+}
+
+/* ---------- Topic cards — appearance from /veza-ui.css ---------- */
+
+.topic { margin-bottom: 18px; }
+
+/* ---------- Platform accordions (landing) ---------- */
+
+.group {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 18px;
+  overflow: hidden;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.group:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-strong);
+}
+
+.group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 18px 22px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+/* Hide the native disclosure triangle */
+.group-head::-webkit-details-marker {
+  display: none;
+}
+
+.group-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.group-blurb {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.count {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--purple);
+  background: var(--lilac);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.chev {
+  color: var(--muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  transform: rotate(90deg);
+  transition: transform 0.2s ease, color 0.15s ease;
+}
+
+.group:hover .chev {
+  color: var(--purple);
+}
+
+.group[open] .chev {
+  transform: rotate(-90deg);
+}
+
+.group[open] .group-head {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Smoothly reveal the section contents when the accordion opens.
+   Uses ::details-content (modern browsers); older browsers simply open
+   instantly, same as before — progressive enhancement, no JS needed. */
+.group::details-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease, content-visibility 0.3s allow-discrete;
+}
+
+.group[open]::details-content {
+  height: auto;
+}
+
+/* ---------- Checklist items (landing) ---------- */
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0 22px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+}
+
+.check-item:first-child {
+  border-top: none;
+}
+
+.check-main {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.check {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--lavender);
+  position: relative;
+}
+
+.check::after {
+  content: "\2713";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--lavender);
+}
+
+.check-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.check-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 6px;
+}
+
+.check-body .reason {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.showme {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--card-bg);
+  border: 1px solid var(--border-strong);
+  color: var(--purple);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.showme:hover {
+  background: var(--lilac);
+  border-color: var(--lavender);
+}
+
+.showme:active {
+  transform: scale(0.98);
+}
+
+.showme .arrow {
+  font-size: 1.05em;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+
+.showme:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Detail page: summary callout ---------- */
+
+.summary {
+  background: var(--lilac);
+  border: 1px solid var(--lilac-border);
+  border-radius: var(--radius-card);
+  padding: 18px 22px;
+  margin: 0 0 32px;
+  color: var(--navy);
+  font-size: 1.02rem;
+}
+
+/* Info callout — appearance from /veza-ui.css; troubleshooting adds space above. */
+.note { margin-top: 40px; }
+
+/* ---------- Detail page: comparison shot ---------- */
+
+.shot {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-inner);
+  background: var(--card-bg);
+}
+
+/* ---------- Check sections ---------- */
+
+.check-sec {
+  margin: 0 0 44px;
+}
+
+.check-sec__head {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin: 0 0 14px;
+}
+
+.check-sec__num {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background: var(--purple);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(113, 69, 233, 0.3);
+}
+
+.check-sec__head h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 4px 0 0;
+}
+
+.check-sec__lead {
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+
+/* Right / wrong comparison */
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Inner tinted panels (live inside a step card, so no border/shadow). */
+.compare-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 18px 14px 20px;
+  border-radius: var(--radius-inner);
+}
+
+.compare-item.good {
+  background: #eef8f1;
+}
+.compare-item.bad {
+  background: #fdeeee;
+}
+
+.verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.verdict.good {
+  color: #1a8f4c;
+}
+.verdict.bad {
+  color: #cc3b3b;
+}
+.verdict .ic {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+.verdict.good .ic {
+  background: #1a8f4c;
+}
+.verdict.bad .ic {
+  background: #cc3b3b;
+}
+
+.compare-cap {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Fix block (how-to under a check) */
+
+.fix {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding: 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+.fix .phone {
+  order: 2;
+  margin-top: 2px;
+}
+.fix__body {
+  order: 1;
+}
+.fix__body h3 {
+  font-family: var(--font-display);
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--navy);
+}
+.fix__body p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.96rem;
+}
+
+/* Numbered phone steps (a row of phones with captions) */
+
+.pstep {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 22px;
+  margin-bottom: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+.pstep .phone,
+.pstep > .compare {
+  order: 2;
+  margin-top: 2px;
+}
+.pstep__body {
+  order: 1;
+}
+.pstep__n {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--purple);
+  background: var(--lilac);
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin: 0 0 10px;
+}
+.pstep__body h3 {
+  font-family: var(--font-display);
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--navy);
+}
+.pstep__body p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.96rem;
+}
+
+/* ---------- Narrow phones ---------- */
+
+@media (max-width: 480px) {
+  .shot {
+    max-width: 180px;
+  }
+  .check-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .showme {
+    align-self: flex-start;
+    /* Line the button's left edge up with the question/reason text, which is
+       indented past the 24px check circle + the 14px .check-main gap. */
+    margin-left: 38px;
+  }
+}
+
+@media (max-width: 560px) {
+  .compare {
+    grid-template-columns: 1fr;
+  }
+  .fix,
+  .pstep {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .fix .phone,
+  .pstep .phone {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
