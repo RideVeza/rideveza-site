@@ -211,7 +211,8 @@ strong { font-weight: 600; color: var(--navy); }
 
 /* Links inside steps and notes. */
 .step .body a,
-.note a {
+.note a,
+.legend__text a {
   color: var(--purple);
   font-weight: 600;
   text-decoration: underline;
@@ -220,7 +221,8 @@ strong { font-weight: 600; color: var(--navy); }
 }
 
 .step .body a:hover,
-.note a:hover { color: var(--purple-dark); }
+.note a:hover,
+.legend__text a:hover { color: var(--purple-dark); }
 
 /* ---------- Topic cards (landing pages; each section sets the gap) ---------- */
 
