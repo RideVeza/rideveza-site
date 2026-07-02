@@ -5,10 +5,9 @@ import path from 'node:path';
 
 // https://astro.build/config
 export default defineConfig({
-  // Keep the original Framer URL working; canonical is the clean kebab route.
-  redirects: {
-    '/Privacy-Policy': '/privacy-policy',
-  },
+  // Legacy /Privacy-Policy redirect lives in netlify.toml — an Astro redirect
+  // emits a stub page that case-collides with /privacy-policy/ on Netlify
+  // and loops.
   vite: {
     plugins: [
       {

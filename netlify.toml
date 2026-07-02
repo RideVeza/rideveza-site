@@ -5,3 +5,10 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Old Framer URL. Kept here (not as an Astro redirect) so no stub file
+# case-collides with /privacy-policy/ on Netlify.
+[[redirects]]
+  from = "/Privacy-Policy"
+  to = "/privacy-policy"
+  status = 301
