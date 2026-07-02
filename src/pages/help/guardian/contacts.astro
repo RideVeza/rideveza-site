@@ -3,8 +3,8 @@ import HelpLayout from "../../../layouts/HelpLayout.astro";
 import Annotated from "../../../components/Annotated.astro";
 
 const items = [
-  "<strong>Transportation</strong> — your children's bussing company. Tap to find contact information.",
-  "<strong>Schools</strong> — your children's schools. Tap to find contact information.",
+  "<strong>Transportation</strong> — your children's bus company. Tap to see its phone number.",
+  "<strong>Schools</strong> — your children's schools. Tap to see a school's phone number.",
 ];
 ---
 
@@ -17,13 +17,13 @@ const items = [
   <h1>Contacts</h1>
 
   <p class="overview">
-    The <strong>Contacts</strong> tab keeps the contact details you might need
-    in one place — your children's bussing company and their schools.
+    The <strong>Contacts</strong> tab keeps the phone numbers you might need in
+    one place: your children's bus company and their schools.
   </p>
 
   <Annotated
     src="/images/help/guardian/contacts-annotated.png"
-    alt="The Veza Guardian Contacts tab, listing transportation companies and schools."
+    alt="The Veza Guardian Contacts tab, listing the bus company and schools, with numbered callouts."
     ratio="2072 / 3664"
     items={items}
   />
