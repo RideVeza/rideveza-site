@@ -5,9 +5,6 @@ import path from 'node:path';
 
 // https://astro.build/config
 export default defineConfig({
-  // Legacy /Privacy-Policy redirect lives in netlify.toml — an Astro redirect
-  // emits a stub page that case-collides with /privacy-policy/ on Netlify
-  // and loops.
   vite: {
     plugins: [
       {
