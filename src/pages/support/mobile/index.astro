@@ -1,0 +1,53 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+
+const sections = [
+  {
+    href: "/support/mobile/guides",
+    title: "Guides",
+    blurb: "Short guides with pictures. Each one shows what a screen does and how to use it.",
+  },
+  {
+    href: "/support/mobile/troubleshooting/",
+    title: "Troubleshooting",
+    blurb: "Fix common problems with downloading the app, passkeys and signing in.",
+  },
+];
+---
+
+<HelpLayout
+  title="Mobile App Support"
+  description="Support for the Veza Mobile App."
+  home="/support/mobile"
+>
+  <h1>Veza Support and How-tos</h1>
+  <span class="eyebrow">Veza Mobile App</span>
+  <p class="subtitle">
+    Support for the Veza Mobile App. Pick a section below.
+  </p>
+
+  <ul class="card-list">
+    {sections.map((s) => (
+      <li>
+        <a class="topic" href={s.href}>
+          <div class="topic-body">
+            <h2 class="topic-title">{s.title}</h2>
+            <p class="topic-blurb">{s.blurb}</p>
+          </div>
+          <span class="topic-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</HelpLayout>
+
+<style>
+  /* Card appearance comes from the shared .topic styles in /veza-ui.css. */
+  .card-list {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 18px;
+  }
+</style>

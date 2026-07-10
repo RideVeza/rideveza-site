@@ -2,7 +2,8 @@
 import "../styles/help.css";
 
 // back: a URL → shows a back pill instead of the logo. wide: 820px tour pages.
-const { title, description = "", back, wide = false } = Astro.props;
+// home: where the brand logo links when there's no back pill.
+const { title, description = "", back, backLabel = "‹ Back to all guides", wide = false, home = "/support/guardian" } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,9 +21,9 @@ const { title, description = "", back, wide = false } = Astro.props;
     <div class:list={["wrap", { "wrap--wide": wide }]}>
       <header class="page">
         {back ? (
-          <a class="back" href={back}>‹ Back to all guides</a>
+          <a class="back" href={back}>{backLabel}</a>
         ) : (
-          <a class="brand" href="/help/guardian">
+          <a class="brand" href={home}>
             <img src="/veza-logo.svg" alt="Veza" />
           </a>
         )}

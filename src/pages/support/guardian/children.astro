@@ -1,0 +1,60 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
+
+const listItems = [
+  "<strong>Your children</strong> — everyone you're a guardian for, each on a card with their school. Tap a child to open their profile.",
+  "<strong>Icons</strong> — a quick view of the information saved for your child. See the <a href='/support/guardian/glossary'>icon glossary</a> for what each icon means.",
+  "<strong>Care &amp; pick-up</strong> — equipment the child uses on the bus, and reminders such as needing a guardian at pick-up.",
+];
+
+const profileItems = [
+  "<strong>Required staff</strong> — icons showing the staff your child requires on the bus, like an attendant or LPN. See the <a href='/support/guardian/glossary'>icon glossary</a>.",
+  "<strong>Name &amp; address</strong> — your child's name and home address.",
+  "<strong>Care</strong> — care instructions, medical conditions, equipment, custody and pick-up notes saved for your child, each shown with its icon.",
+  "<strong>Contacts</strong> — your child's guardians.",
+  "<strong>Emergency contacts</strong> — who the school or driver will call if a guardian can't be reached.",
+  "<strong>School</strong> — the school your child attends. Tap it for the school's contact information.",
+];
+---
+
+<HelpLayout
+  title="Your children"
+  description="View your children and their details in Veza Guardian."
+  back="/support/guardian"
+  wide
+>
+  <h1>Your children</h1>
+
+  <p class="overview">
+    The <strong>Children</strong> tab shows every child you are a guardian for.
+    Each child shows their school, care needs, and notes for the driver. Tap a
+    child to see their full profile.
+  </p>
+
+  <section class="screen">
+    <h2 class="screen__title">Children</h2>
+    <p class="screen__lead">
+      Each child has their own card. Tap one to open their profile.
+    </p>
+    <Annotated
+      src="/images/support/guardian/children-annotated.png"
+      alt="The Veza Guardian Children tab, listing each child on a card, with numbered callouts."
+      ratio="2064 / 3664"
+      items={listItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title">Child profile</h2>
+    <p class="screen__lead">
+      Tapping a child opens their profile — care needs, contacts and more.
+    </p>
+    <Annotated
+      src="/images/support/guardian/child-profile-annotated.png"
+      alt="A child's profile in Veza Guardian, showing care, contacts and details, with numbered callouts."
+      ratio="2064 / 3664"
+      items={profileItems}
+    />
+  </section>
+</HelpLayout>

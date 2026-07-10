@@ -1,0 +1,168 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+
+// Icon tiles are pre-styled in the exports (coloured background + border baked
+// in) and placed as-is at 60px. Support staff is a wider pill. Supervisor is a
+// hand-built SVG tile matching the exports (no Figma PNG for it).
+const entries = [
+  {
+    icon: "icon-driver.png",
+    title: "Driver",
+    desc: "Marks the driver on your child's run.",
+  },
+  {
+    icon: "icon-attendant.png",
+    title: "Attendant",
+    desc: "Marks an attendant on your child's run — an extra staff member who rides on the bus to help.",
+  },
+  {
+    icon: "icon-lpn.png",
+    title: "LPN",
+    desc: "Marks an LPN (licensed practical nurse) on your child's run.",
+  },
+  {
+    icon: "icon-supervisor.svg",
+    title: "Supervisor",
+    desc: "Marks a supervisor on your child's run — a staff member in charge of the run.",
+  },
+  {
+    icon: "icon-care.png",
+    title: "Care",
+    desc: "Shown when your child has care instructions (a care plan).",
+  },
+  {
+    icon: "icon-equipment.png",
+    title: "Equipment",
+    desc: "Shown when your child uses equipment on the bus.",
+  },
+  {
+    icon: "icon-medical.png",
+    title: "Medical",
+    desc: "Shown when your child has a medical condition.",
+  },
+  {
+    icon: "icon-met-at-bus.png",
+    title: "Requires a guardian at pick-up",
+    desc: "Shown when your child must be met at the bus at their stop.",
+  },
+  {
+    icon: "icon-custody.png",
+    title: "Custody",
+    desc: "Shown when your child has a custody consideration.",
+  },
+  {
+    icon: "icon-support-staff.png",
+    title: "Support staff",
+    desc: "Shown when your child requires an attendant or an LPN (or both) on the bus.",
+    wide: true,
+  },
+];
+---
+
+<HelpLayout
+  title="Icon glossary"
+  description="What each icon in the Veza Guardian App means."
+  back="/support/guardian"
+>
+  <h1>Icon glossary</h1>
+
+  <p class="overview">
+    The Veza Guardian App uses small icons. They show who is on your child's
+    bus and what is saved for them. Here is what each icon means.
+  </p>
+
+  <ul class="glossary">
+    {entries.map((e) => (
+      <li class="entry">
+        <span class="entry__icon">
+          <img
+            src={`/images/support/guardian/icons/${e.icon}`}
+            alt=""
+            width={e.wide ? 109 : 60}
+            height="60"
+            loading="lazy"
+          />
+        </span>
+        <div class="entry__text">
+          <h2 class="entry__title">{e.title}</h2>
+          <p class="entry__desc">{e.desc}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</HelpLayout>
+
+<style>
+  /* One card, rows divided by a hairline — a reference list, sibling to the
+     step/annotated cards. Icon tiles come pre-styled in the PNGs. */
+  .glossary {
+    list-style: none;
+    margin: 0;
+    padding: 0 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .entry {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .entry:last-child {
+    border-bottom: none;
+  }
+
+  /* Fixed icon column, contents left-aligned, so every title starts on one
+     vertical line whatever the icon's width (the Support-staff pill is ~109px). */
+  .entry__icon {
+    flex: none;
+    width: 120px;
+    display: flex;
+    align-items: center;
+  }
+
+  .entry__icon img {
+    display: block;
+    height: 60px;
+    width: auto;
+  }
+
+  .entry__text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .entry__title {
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+    margin: 0 0 4px;
+  }
+
+  .entry__desc {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .glossary {
+      padding: 0 16px;
+    }
+    .entry {
+      gap: 16px;
+      padding: 20px 0;
+    }
+    /* Stay wide enough for the ~109px pill so titles remain aligned. */
+    .entry__icon {
+      width: 112px;
+    }
+  }
+</style>

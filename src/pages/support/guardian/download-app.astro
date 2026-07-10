@@ -1,0 +1,123 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+
+// Requirements mirror the Veza Mobile App troubleshooting guide.
+---
+
+<HelpLayout
+  title="Downloading the app"
+  description="Get the Veza Guardian App on your phone."
+  back="/support/guardian"
+>
+  <h1>Downloading the app</h1>
+
+  <p class="overview">
+    The Veza Guardian App is free on the App Store and Google Play. Two quick
+    checks help it install the first time.
+  </p>
+
+  <section class="screen">
+    <h2 class="screen__title">Before you download</h2>
+    <ul class="reqs">
+      <li>
+        <strong>Free space</strong> — your phone needs at least 100 MB free to
+        download the app.
+      </li>
+      <li>
+        <strong>Set to Canada</strong> — the app is in the Canadian store. Set
+        your App Store or Google Play country to Canada. If you do not, the app
+        will not appear.
+      </li>
+      <li>
+        <strong>Signed in</strong> — you'll need to be signed in to your Apple
+        Account on iPhone, or your Google Account on Android.
+      </li>
+    </ul>
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title">Get the app</h2>
+    <p class="screen__lead">
+      Search for "Veza Guardian" in your phone's app store, or tap your store
+      below.
+    </p>
+    <div class="stores">
+      <div class="store-card">
+        <a class="store-badge store-badge--ios" href="https://apps.apple.com/ca/app/veza-guardian/id6785609454">
+          <img src="/images/badges/app-store-badge.svg" alt="Download on the App Store" />
+        </a>
+        <img
+          class="phone"
+          src="/images/support/guardian/app-store-ios.png"
+          alt="The Veza Guardian listing on the App Store."
+          loading="lazy"
+        />
+      </div>
+      <div class="store-card">
+        <a class="store-badge store-badge--android" href="https://play.google.com/store/apps/details?id=com.rideveza.guardian.app">
+          <img src="/images/badges/google-play-badge.png" alt="Get it on Google Play" />
+        </a>
+        <img
+          class="phone"
+          src="/images/support/guardian/google-play-android.png"
+          alt="The Veza Guardian listing on Google Play."
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <p class="store-tm">
+      Apple and the Apple logo are trademarks of Apple Inc. Google Play and the
+      Google Play logo are trademarks of Google LLC.
+    </p>
+  </section>
+</HelpLayout>
+
+<style>
+  .stores {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .store-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 20px 20px 24px;
+    text-align: center;
+  }
+
+  /* The Google badge PNG ships with built-in transparent padding, so it needs
+     a larger height than the Apple SVG to render at the same visual size. */
+  .store-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+  }
+
+  .store-badge--ios img {
+    height: 44px;
+  }
+
+  .store-badge--android img {
+    height: 64px;
+  }
+
+  .store-tm {
+    margin: 10px 0 0;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .store-card .phone {
+    margin: 16px auto 0;
+  }
+
+  @media (max-width: 560px) {
+    .stores {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
