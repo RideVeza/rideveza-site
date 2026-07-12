@@ -1,0 +1,2 @@
+# Old help URLs (linked from sent newsletters) moved under /support.
+/help/*  /support/:splat  301

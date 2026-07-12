@@ -1,0 +1,68 @@
+---
+import HelpLayout from "../../layouts/HelpLayout.astro";
+import { editions } from "../../newsletters/editions.js";
+---
+
+<HelpLayout
+  title="Newsletters"
+  description="Weekly What's New updates for Veza clients."
+  home="/newsletters"
+>
+  <h1>Veza Newsletters</h1>
+  <span class="eyebrow">What's New</span>
+  <p class="subtitle">
+    Weekly updates on what's new across Veza Web, the driver app, and the
+    Guardian app. Pick a week below.
+  </p>
+
+  <ul class="edition-list">
+    {editions.map((e) => (
+      <li>
+        <a href={`/newsletters/${e.slug}`}>
+          <span class="edition-title">{e.title}</span>
+          <span class="edition-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</HelpLayout>
+
+<style>
+  .edition-list {
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    border-top: 1px solid var(--border-strong);
+  }
+  .edition-list li {
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .edition-list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 4px;
+    text-decoration: none;
+  }
+  .edition-title {
+    color: var(--navy);
+    font-weight: 600;
+    letter-spacing: -0.1px;
+    transition: color 0.15s ease;
+  }
+  .edition-arrow {
+    color: var(--lavender);
+    font-weight: 500;
+    transition:
+      transform 0.15s ease,
+      color 0.15s ease;
+  }
+  .edition-list a:hover .edition-title {
+    color: var(--purple);
+  }
+  .edition-list a:hover .edition-arrow {
+    color: var(--purple);
+    transform: translateX(3px);
+  }
+</style>

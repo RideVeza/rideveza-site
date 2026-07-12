@@ -1,0 +1,33 @@
+---
+import HelpLayout from "../../layouts/HelpLayout.astro";
+import { editions } from "../../newsletters/editions.js";
+import { renderEdition } from "../../newsletters/render.js";
+
+export function getStaticPaths() {
+  return editions.map((e) => ({
+    params: { slug: e.slug },
+    props: { edition: e },
+  }));
+}
+
+const { edition } = Astro.props;
+const html = renderEdition(edition.slug);
+---
+
+<HelpLayout
+  title={`Newsletter — ${edition.title}`}
+  back="/newsletters"
+  backLabel="‹ All newsletters"
+>
+  <div class="nl__frame" set:html={html} />
+</HelpLayout>
+
+<style>
+  .nl__frame {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-inner);
+    overflow: hidden;
+    margin-top: 20px;
+  }
+</style>
