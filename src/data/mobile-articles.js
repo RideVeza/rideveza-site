@@ -22,10 +22,16 @@ const entries = [
     ready: true,
   },
   {
-    href: "/support/mobile/passkeys/",
-    title: "Setting up your passkey",
-    blurb: "Set up a passkey to sign in without a password, and fix common setup problems.",
+    href: "/support/mobile/account-setup/",
+    title: "Setting up your account",
+    blurb: "Create your account with a passkey, and fix common setup problems.",
     ready: true,
+  },
+  {
+    slug: "signing-in",
+    title: "Signing in",
+    blurb: "Sign in with one tap using your passkey.",
+    ready: false,
   },
   {
     slug: "run-dashboard",

@@ -1,0 +1,54 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+---
+
+<HelpLayout
+  title="Signing in"
+  description="Sign in to the Veza Mobile App with your passkey."
+  back="/support/mobile"
+>
+  <h1>Signing in</h1>
+
+  <p class="overview">
+    Once your passkey is set up, signing in takes one tap — no password to
+    remember.
+  </p>
+
+  <ol class="steps">
+    <li class="step">
+      <span class="num"></span>
+      <div class="body">
+        <h2>Tap Sign in securely</h2>
+        <p>Open the app and tap <strong>Sign in securely</strong>.</p>
+        <img
+          class="phone"
+          src="/images/support/mobile/signing-in/sign-in.png"
+          alt="The Sign in to Veza screen, with a Sign in securely button."
+          loading="lazy"
+        />
+      </div>
+    </li>
+
+    <li class="step">
+      <span class="num"></span>
+      <div class="body">
+        <h2>Approve with your passkey</h2>
+        <p>
+          Your phone opens its passkey flow — this looks different on each
+          device. Approve it the way you usually unlock your phone, such as
+          Face ID, your fingerprint or your PIN. You will be asked to sign in
+          once every few days — this keeps your riders' information safe.
+        </p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="note">
+    <span class="note__icon" aria-hidden="true">i</span>
+    <p>
+      <strong>Passkey not working, or been removed?</strong> You can request a
+      new passkey setup email from your administrator, then follow
+      <a href="/support/mobile/account-setup/">Setting up your account</a>.
+    </p>
+  </div>
+</HelpLayout>

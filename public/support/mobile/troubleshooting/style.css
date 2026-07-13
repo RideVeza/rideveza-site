@@ -17,6 +17,23 @@ header.page {
   margin-bottom: 28px;
 }
 
+/* Section headings on hub pages (e.g. "Before getting started" /
+   "Creating your account" on the passkey page). */
+.section-head {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 38px 0 4px;
+}
+
+.section-lead {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
 /* .subtitle and .eyebrow appearance come from /veza-ui.css. */
 
 .group-note {
@@ -307,6 +324,13 @@ header.page {
 
 /* Info callout — appearance from /veza-ui.css; troubleshooting adds space above. */
 .note { margin-top: 40px; }
+
+/* Small caveat line inside a step. */
+.step .hint {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
+}
 
 /* ---------- Detail page: comparison shot ---------- */
 
