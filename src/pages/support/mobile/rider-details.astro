@@ -1,0 +1,33 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+
+// Callout items for the annotated screenshot (image to come).
+const items = [
+  "<strong>Care plan</strong> — tap here to find detailed information on rider medical and equipment needs.",
+  "<strong>Contacts</strong> — rider contacts, including both emergency and non-emergency contacts.",
+  "<strong>Additional detail</strong> — more details can be found here, including schedule and school information.",
+];
+---
+
+<HelpLayout
+  title="Rider details"
+  description="View a rider's profile in the Veza Mobile App."
+  back="/support/mobile"
+>
+  <h1>Rider details</h1>
+
+  <p class="overview">
+    You can open a rider's profile from your assigned runs by tapping any rider
+    tile. This screen shows the rider's name, photo, address, care indicators
+    and key safety information.
+  </p>
+
+  <p>
+    From here, you can view guardian and emergency contacts, review care needs,
+    and check schedule and school details — helping you support each rider
+    safely and consistently during your route.
+  </p>
+
+  <!-- PLACEHOLDER: numbered screenshot + <Annotated items={items}> -->
+  <div class="placeholder">Screenshots coming soon</div>
+</HelpLayout>

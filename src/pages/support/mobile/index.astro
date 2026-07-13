@@ -1,18 +1,10 @@
 ---
 import HelpLayout from "../../../layouts/HelpLayout.astro";
+import { articles } from "../../../data/mobile-articles.js";
 
-const sections = [
-  {
-    href: "/support/mobile/guides",
-    title: "Guides",
-    blurb: "Short guides with pictures. Each one shows what a screen does and how to use it.",
-  },
-  {
-    href: "/support/mobile/troubleshooting/",
-    title: "Troubleshooting",
-    blurb: "Fix common problems with downloading the app, passkeys and signing in.",
-  },
-];
+// Draft articles show greyed in dev so we can keep working on them, but are
+// dropped from production builds (their pages are pruned in astro.config.mjs).
+const shown = import.meta.env.PROD ? articles.filter((a) => a.ready) : articles;
 ---
 
 <HelpLayout
@@ -20,20 +12,22 @@ const sections = [
   description="Support for the Veza Mobile App."
   home="/support/mobile"
 >
-  <h1>Veza Support and How-tos</h1>
+  <h1>Veza Guides and Support</h1>
   <span class="eyebrow">Veza Mobile App</span>
   <p class="subtitle">
-    Support for the Veza Mobile App. Pick a section below.
+    Short guides with pictures for the Veza Mobile App. Each one shows what a
+    screen does and how to use it. Pick a topic below.
   </p>
 
   <ul class="card-list">
-    {sections.map((s) => (
+    {shown.map((a) => (
       <li>
-        <a class="topic" href={s.href}>
+        <a class:list={["topic", { "topic--draft": !a.ready }]} href={a.href}>
           <div class="topic-body">
-            <h2 class="topic-title">{s.title}</h2>
-            <p class="topic-blurb">{s.blurb}</p>
+            <h2 class="topic-title">{a.title}</h2>
+            <p class="topic-blurb">{a.blurb}</p>
           </div>
+          {!a.ready && <span class="draft-tag">Draft</span>}
           <span class="topic-arrow" aria-hidden="true">→</span>
         </a>
       </li>
@@ -49,5 +43,22 @@ const sections = [
     padding: 0;
     display: grid;
     gap: 18px;
+  }
+
+  /* Unfinished guides: visible in dev only, greyed out. */
+  .topic--draft {
+    filter: grayscale(1);
+    opacity: 0.55;
+  }
+
+  .draft-tag {
+    flex: none;
+    align-self: center;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
   }
 </style>

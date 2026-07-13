@@ -1,0 +1,133 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
+
+const checkInItems = [
+  "<strong>Your bus company</strong> — the logo of the bus company you work for. Tap it to see the company's contact information.",
+  "<strong>A run card</strong> — high-level information about one of your runs for the day. Tap anywhere on the card to open the run, see more detail and complete its steps.",
+  "<strong>Run status</strong> — before the run starts, this shows its start and end time. Once the run is complete, it becomes a Completed badge.",
+  "<strong>Progress bar</strong> — fills in as you complete the steps of the run.",
+  "<strong>Run name</strong> — the run's name and its direction, to or from school.",
+  "<strong>Check-in banner</strong> — shows when you can check in, with a shortcut button once the window is open.",
+  "<strong>Stops &amp; riders</strong> — the number of stops and the number of riders on the run.",
+];
+
+// TODO: link "Assigned routes" to the route detail guide once that page exists.
+const upcomingItems = [
+  "<strong>View All</strong> — opens a screen with all of your upcoming run schedules, as well as your past runs.",
+  "<strong>Upcoming runs</strong> — a preview of your runs coming up. Each card is one run — swipe right to see further into the future, or tap a card to see the run's details. Helpful for reviewing what is coming up.",
+  "<strong>Assigned routes</strong> — the routes you are assigned to. The circles show the days of the week the route has runs. Tap the card to see more detail about your route.",
+];
+---
+
+<HelpLayout
+  title="Run dashboard"
+  description="See your scheduled runs in the Veza Mobile App."
+  back="/support/mobile"
+  wide
+>
+  <h1>Run dashboard</h1>
+
+  <p class="overview">
+    When you sign in, you will see your Run Dashboard, which shows all of the
+    runs you have scheduled for today. Each card is one of your runs, with the
+    important high-level details at a glance. Scroll down to see runs you have
+    coming up for the week, as well as information about your assigned routes.
+  </p>
+
+  <section class="screen">
+    <h2 class="screen__title">Helpful terms</h2>
+    <dl class="terms">
+      <div class="term">
+        <dt>Run</dt>
+        <dd>
+          One bus trip, with a set time and direction — for example, a morning
+          trip to school. Each run has its stops and riders.
+        </dd>
+      </div>
+      <div class="term">
+        <dt>Route</dt>
+        <dd>
+          A set of runs that repeat on set days of the week. You are assigned
+          to routes, and they are where your daily runs come from.
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title">Today's runs</h2>
+    <p class="screen__lead">
+      Your runs for the day, in order. Each card shows the run's time, name and
+      status. Tap a card to open the run's detail view, where you can see the
+      full schedule and complete the run.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-dashboard/runs-check-in-annotated.png"
+      alt="The Veza Mobile App Run Dashboard, with numbered callouts pointing to each feature."
+      ratio="2072 / 3664"
+      items={checkInItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title">Upcoming runs and routes</h2>
+    <p class="screen__lead">
+      Scroll down for your upcoming runs for the week and the routes you are
+      assigned to.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-dashboard/runs-upcoming-annotated.png"
+      alt="The lower half of the Run Dashboard, with numbered callouts pointing to upcoming runs and assigned routes."
+      ratio="2072 / 3664"
+      items={upcomingItems}
+    />
+  </section>
+</HelpLayout>
+
+<style>
+  /* Term reference card, sibling styling to the glossary list. */
+  .terms {
+    margin: 16px 0 0;
+    padding: 0 22px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .term {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .term:last-child {
+    border-bottom: none;
+  }
+
+  .term dt {
+    flex: none;
+    width: 72px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--purple);
+  }
+
+  .term dd {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  @media (max-width: 480px) {
+    .terms {
+      padding: 0 16px;
+    }
+    .term {
+      gap: 16px;
+    }
+  }
+</style>
