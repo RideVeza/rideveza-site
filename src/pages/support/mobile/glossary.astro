@@ -6,47 +6,52 @@ const entries = [
   {
     icon: "icon-driver.png",
     title: "Driver",
-    desc: "Represents a driver. Used to distinguish this role in the team section of a run.",
+    desc: "Marks the driver on a run, in the run's team section.",
   },
   {
     icon: "icon-attendant.png",
     title: "Attendant",
-    desc: "Represents an attendant. Used to distinguish this role in the team section of a run and to show that an attendant is present on the run.",
+    desc: "Marks an attendant on a run's team, and shows that an attendant is present on the run.",
   },
   {
     icon: "icon-lpn.png",
     title: "LPN",
-    desc: "Represents an LPN (licensed practical nurse). Used to distinguish this role in the team section of a run and to show that an LPN is present on the run.",
+    desc: "Marks an LPN (licensed practical nurse) on a run's team, and shows that an LPN is present on the run.",
+  },
+  {
+    icon: "icon-supervisor.svg",
+    title: "Supervisor",
+    desc: "Marks a supervisor on a run — the staff member in charge of the run.",
   },
   {
     icon: "icon-care.png",
     title: "Care",
-    desc: "Appears on rider profiles and indicates that care instructions are provided (a care plan).",
+    desc: "Shown when a rider has care instructions (a care plan). Review these before the run.",
   },
   {
     icon: "icon-equipment.png",
     title: "Equipment",
-    desc: "Appears on rider profiles and indicates that they have equipment requirements.",
+    desc: "Shown when a rider uses equipment on the bus.",
   },
   {
     icon: "icon-medical.png",
     title: "Medical",
-    desc: "Appears on rider profiles and indicates that they have a medical condition.",
+    desc: "Shown when a rider has a medical condition.",
   },
   {
     icon: "icon-met-at-bus.png",
     title: "Met at the bus",
-    desc: "Appears on rider profiles and indicates that they must be met at the bus at their stop.",
+    desc: "Shown when a rider must be met at the bus by a guardian at their stop.",
   },
   {
     icon: "icon-custody.png",
     title: "Custody",
-    desc: "Appears on rider profiles and indicates that they have a custody consideration.",
+    desc: "Shown when a rider has a custody consideration.",
   },
   {
     icon: "icon-support-staff.png",
     title: "Support staff",
-    desc: "Appears on rider profiles and indicates that the rider requires the presence of an attendant or an LPN (or both) on the bus.",
+    desc: "Shown when a rider requires an attendant or an LPN (or both) on the bus.",
     wide: true,
   },
 ];

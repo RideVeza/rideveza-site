@@ -73,7 +73,7 @@ const entries = [
     slug: "glossary",
     title: "Icon glossary",
     blurb: "What each icon in the app means, from care needs to bus staff.",
-    ready: false,
+    ready: true,
   },
 ];
 
