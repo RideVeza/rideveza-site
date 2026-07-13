@@ -1,6 +1,2 @@
 # Old help URLs (linked from sent newsletters) moved under /support.
 /help/*  /support/:splat  301
-
-# The troubleshooting index merged into the mobile support hub.
-/support/mobile/troubleshooting/  /support/mobile/  301
-/support/mobile/troubleshooting/index.html  /support/mobile/  301

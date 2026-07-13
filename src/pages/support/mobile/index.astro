@@ -1,60 +1,10 @@
 ---
 import HelpLayout from "../../../layouts/HelpLayout.astro";
+import { articles } from "../../../data/mobile-articles.js";
 
-// Mobile app support. Ordered: get the app & get in (troubleshooting hubs),
-// then using the app (guides).
-const articles = [
-  {
-    href: "/support/mobile/troubleshooting/download-app.html",
-    title: "Downloading the app",
-    blurb: "Get the Veza Mobile App onto your phone, and fix common download problems.",
-  },
-  {
-    href: "/support/mobile/troubleshooting/passkeys.html",
-    title: "Setting up your passkey",
-    blurb: "Set up a passkey to sign in without a password, and fix common setup problems.",
-  },
-  {
-    href: "/support/mobile/run-dashboard",
-    title: "Run dashboard",
-    blurb: "See today's runs, upcoming runs and your assigned routes.",
-  },
-  {
-    href: "/support/mobile/run-summary",
-    title: "Run summary",
-    blurb: "Open a run to see its schedule, riders, team and map.",
-  },
-  {
-    href: "/support/mobile/step-by-step",
-    title: "Step by step view",
-    blurb: "Complete a run — check in, inspect, and mark riders picked up or absent.",
-  },
-  {
-    href: "/support/mobile/rider-details",
-    title: "Rider details",
-    blurb: "View a rider's profile — care needs, contacts, school and schedule.",
-  },
-  {
-    href: "/support/mobile/contacts",
-    title: "Contacts",
-    blurb: "Find phone numbers and emails for your organization.",
-  },
-  {
-    href: "/support/mobile/resources",
-    title: "Resources",
-    blurb: "Open forms, documents and school calendars.",
-  },
-  {
-    href: "/support/mobile/account",
-    title: "Account settings",
-    blurb: "Update your profile, choose your map app and log out.",
-  },
-  {
-    href: "/support/mobile/glossary",
-    title: "Icon glossary",
-    blurb: "What each icon in the app means, from care needs to bus staff.",
-  },
-];
+// Draft articles show greyed in dev so we can keep working on them, but are
+// dropped from production builds (their pages are pruned in astro.config.mjs).
+const shown = import.meta.env.PROD ? articles.filter((a) => a.ready) : articles;
 ---
 
 <HelpLayout
@@ -62,7 +12,7 @@ const articles = [
   description="Support for the Veza Mobile App."
   home="/support/mobile"
 >
-  <h1>Veza Support and How-tos</h1>
+  <h1>Veza Guides and Support</h1>
   <span class="eyebrow">Veza Mobile App</span>
   <p class="subtitle">
     Short guides with pictures for the Veza Mobile App. Each one shows what a
@@ -70,13 +20,14 @@ const articles = [
   </p>
 
   <ul class="card-list">
-    {articles.map((a) => (
+    {shown.map((a) => (
       <li>
-        <a class="topic" href={a.href}>
+        <a class:list={["topic", { "topic--draft": !a.ready }]} href={a.href}>
           <div class="topic-body">
             <h2 class="topic-title">{a.title}</h2>
             <p class="topic-blurb">{a.blurb}</p>
           </div>
+          {!a.ready && <span class="draft-tag">Draft</span>}
           <span class="topic-arrow" aria-hidden="true">→</span>
         </a>
       </li>
@@ -92,5 +43,22 @@ const articles = [
     padding: 0;
     display: grid;
     gap: 18px;
+  }
+
+  /* Unfinished guides: visible in dev only, greyed out. */
+  .topic--draft {
+    filter: grayscale(1);
+    opacity: 0.55;
+  }
+
+  .draft-tag {
+    flex: none;
+    align-self: center;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
   }
 </style>

@@ -41,6 +41,39 @@ header.page {
   color: var(--purple-dark);
 }
 
+/* Store CTA note: text on the left, badge on the right. Wraps to a stack
+   when the row gets too narrow. */
+.group-note--split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+}
+
+.group-note--split p {
+  margin: 0;
+}
+
+/* The Google badge PNG ships with built-in transparent padding, so it needs
+   a larger height than the Apple SVG to render at the same visual size. */
+.group-note .store-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+}
+
+.store-badge--ios img {
+  height: 44px;
+}
+
+.store-badge--android img {
+  height: 64px;
+  /* Cancel the badge's baked-in transparent border (41/250 of its height)
+     so its visible edges line up with the Apple badge and the note text. */
+  margin: 0 -10.5px;
+}
+
 /* ---------- Back link (detail pages) — appearance from /veza-ui.css ---------- */
 
 .back { margin-bottom: 22px; }

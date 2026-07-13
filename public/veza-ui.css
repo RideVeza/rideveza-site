@@ -281,3 +281,14 @@ strong { font-weight: 600; color: var(--navy); }
   transform: translateX(3px);
   background: var(--lavender);
 }
+
+/* ---------- Draft-guide screenshot placeholder (dev-only pages) ---------- */
+
+.placeholder {
+  margin: 16px 0 0;
+  padding: 40px 22px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-card);
+  color: var(--muted);
+  text-align: center;
+}
