@@ -1,10 +1,5 @@
 ---
 import HelpLayout from "../../../layouts/HelpLayout.astro";
-
-// Callout items for the annotated screenshot (image to come).
-const items = [
-  "<strong>Contact details</strong> — tap any contact to open a modal with additional detail and contact information.",
-];
 ---
 
 <HelpLayout
@@ -15,16 +10,33 @@ const items = [
   <h1>Contacts</h1>
 
   <p class="overview">
-    You can open the Contacts page from the main menu bar. This screen shows
-    key contact information for your organization, including dispatchers, site
-    staff and emergency contacts.
+    Open the <strong>Contacts</strong> tab in the bottom navigation bar to find
+    the right person at your organization — dispatch, safety, your supervisor
+    and more.
   </p>
 
   <p>
-    From here, you can quickly find phone numbers and emails, making it easy to
-    reach the right person when you need support or clarification during a run.
+    Tap any contact to open a pop-up with their phone number and email.
   </p>
 
-  <!-- PLACEHOLDER: numbered screenshot + <Annotated items={items}> -->
-  <div class="placeholder">Screenshots coming soon</div>
+  <img
+    class="phone"
+    src="/images/support/mobile/contacts/contacts.png"
+    alt="The Veza Mobile App Contacts screen, listing contacts such as Dispatch, Fleet and Safety."
+    loading="lazy"
+  />
+
+  <div class="note">
+    <span class="note__icon" aria-hidden="true">i</span>
+    <p>
+      In the event of a <strong>serious emergency, call 911</strong>
+      immediately, followed by Dispatch.
+    </p>
+  </div>
 </HelpLayout>
+
+<style>
+  .phone {
+    margin: 24px 0 32px;
+  }
+</style>

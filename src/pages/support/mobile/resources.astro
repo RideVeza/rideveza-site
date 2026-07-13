@@ -1,25 +1,34 @@
 ---
 import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
+
+const items = [
+  "<strong>Forms</strong> — fill in and submit your organization's forms, such as safety, student care and HR submissions.",
+  "<strong>Documents</strong> — reference documents shared by your organization.",
+  "<strong>School Calendars</strong> — check each school's calendar for holidays and closures.",
+  "<strong>Veza Resources</strong> — guides and help for using Veza.",
+  "<strong>Expense Reimbursement</strong> — submit an expense for reimbursement.",
+];
 ---
 
 <HelpLayout
   title="Resources"
   description="Open forms, documents and school calendars in the Veza Mobile App."
   back="/support/mobile"
+  wide
 >
   <h1>Resources</h1>
 
   <p class="overview">
-    You can open Resources from the main navigation bar. This section provides
-    quick access to important tools, reference materials and schedules to
-    support your daily work.
+    Open the <strong>Resources</strong> tab in the bottom navigation bar for
+    quick access to the forms, documents and schedules that support your daily
+    work.
   </p>
 
-  <p>
-    From here, you can open forms, review documents, and check school calendars
-    to stay informed and prepared for your runs.
-  </p>
-
-  <!-- PLACEHOLDER: screenshots (Resources list + Forms screen) -->
-  <div class="placeholder">Screenshots coming soon</div>
+  <Annotated
+    src="/images/support/mobile/resources/resources-annotated.png"
+    alt="The Veza Mobile App Resources screen, with numbered callouts pointing to each section."
+    ratio="2072 / 3664"
+    items={items}
+  />
 </HelpLayout>

@@ -61,19 +61,19 @@ const entries = [
     slug: "contacts",
     title: "Contacts",
     blurb: "Find phone numbers and emails for your organization.",
-    ready: false,
+    ready: true,
   },
   {
     slug: "resources",
     title: "Resources",
     blurb: "Open forms, documents and school calendars.",
-    ready: false,
+    ready: true,
   },
   {
     slug: "account",
     title: "Account settings",
     blurb: "Update your profile, choose your map app and log out.",
-    ready: false,
+    ready: true,
   },
   {
     slug: "glossary",

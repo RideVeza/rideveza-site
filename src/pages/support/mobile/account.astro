@@ -1,9 +1,12 @@
 ---
 import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
 
-// Callout items for the annotated screenshot (image to come).
 const items = [
-  "<strong>Change map provider</strong> — change your default map provider here. Veza supports both Apple and Google maps.",
+  "<strong>Your details</strong> — your name, job title, company and employee ID, as your organization has them on file.",
+  "<strong>Default map</strong> — choose the map app that opens when you navigate. Veza supports Apple Maps, Google Maps and Waze.",
+  "<strong>App version</strong> — the version of the app you are running. Helpful when reporting a problem.",
+  "<strong>Log out</strong> — securely log out of your account.",
 ];
 ---
 
@@ -11,21 +14,19 @@ const items = [
   title="Account settings"
   description="Manage your profile in the Veza Mobile App."
   back="/support/mobile"
+  wide
 >
   <h1>Account settings</h1>
 
   <p class="overview">
-    You can open the Account page from the main navigation bar. This screen
-    shows your profile information, including your name, email, company and
-    employee ID.
+    Open the <strong>Account</strong> tab in the bottom navigation bar to see
+    your profile information, choose your preferred map app, and log out.
   </p>
 
-  <p>
-    From here, you can update your profile picture, choose your preferred
-    navigation app, view the current app version, and securely log out of your
-    account.
-  </p>
-
-  <!-- PLACEHOLDER: numbered screenshot + <Annotated items={items}> -->
-  <div class="placeholder">Screenshots coming soon</div>
+  <Annotated
+    src="/images/support/mobile/account/account-annotated.png"
+    alt="The Veza Mobile App Account screen, with numbered callouts pointing to each feature."
+    ratio="2072 / 3664"
+    items={items}
+  />
 </HelpLayout>
