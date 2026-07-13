@@ -31,7 +31,7 @@ const entries = [
     slug: "signing-in",
     title: "Signing in",
     blurb: "Sign in with one tap using your passkey.",
-    ready: false,
+    ready: true,
   },
   {
     slug: "run-dashboard",
