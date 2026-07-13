@@ -31,7 +31,7 @@ const entries = [
     slug: "run-dashboard",
     title: "Run dashboard",
     blurb: "See today's runs, upcoming runs and your assigned routes.",
-    ready: false,
+    ready: true,
   },
   {
     slug: "run-summary",
