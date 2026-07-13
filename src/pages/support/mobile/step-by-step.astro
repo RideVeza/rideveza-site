@@ -1,0 +1,36 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+
+// Callout items for the annotated screenshot (image to come).
+const items = [
+  "<strong>Navigate between steps</strong> — move between steps by swiping, tapping a step pill, or using the 'Previous' and 'Next' buttons at the bottom of the screen.",
+  "<strong>Scheduled time</strong> — each step has a scheduled time. When you complete the step, your actual completion time appears in green (for early or on-time) or red (for late).",
+  "<strong>Run steps appear on cards</strong> — each step is a single card with all the detail you need to complete it. Mark riders and complete steps at the touch of a button.",
+  "<strong>Information when you need it</strong> — tap any rider card to see detailed information on the rider or the stop.",
+];
+---
+
+<HelpLayout
+  title="Step by step view"
+  description="Complete a run in the Veza Mobile App."
+  back="/support/mobile"
+>
+  <h1>Step by step view</h1>
+
+  <p class="overview">
+    When you are ready to complete your run, enter the <strong>Step by
+    Step</strong> view. It provides all the detail you need to complete a run
+    and lets you complete key actions like checking in and out, performing
+    inspections, and marking riders picked up or absent. You can exit this
+    view at any time.
+  </p>
+
+  <p>
+    Once you complete your run, you will be returned to the <strong>run
+    review</strong> screen, where you can review the final details of the
+    completed run.
+  </p>
+
+  <!-- PLACEHOLDER: numbered screenshot + <Annotated items={items}> -->
+  <div class="placeholder">Screenshots coming soon</div>
+</HelpLayout>

@@ -1,16 +1,58 @@
 ---
 import HelpLayout from "../../../layouts/HelpLayout.astro";
 
-const sections = [
+// Mobile app support. Ordered: get the app & get in (troubleshooting hubs),
+// then using the app (guides).
+const articles = [
   {
-    href: "/support/mobile/guides",
-    title: "Guides",
-    blurb: "Short guides with pictures. Each one shows what a screen does and how to use it.",
+    href: "/support/mobile/troubleshooting/download-app.html",
+    title: "Downloading the app",
+    blurb: "Get the Veza Mobile App onto your phone, and fix common download problems.",
   },
   {
-    href: "/support/mobile/troubleshooting/",
-    title: "Troubleshooting",
-    blurb: "Fix common problems with downloading the app, passkeys and signing in.",
+    href: "/support/mobile/troubleshooting/passkeys.html",
+    title: "Setting up your passkey",
+    blurb: "Set up a passkey to sign in without a password, and fix common setup problems.",
+  },
+  {
+    href: "/support/mobile/run-dashboard",
+    title: "Run dashboard",
+    blurb: "See today's runs, upcoming runs and your assigned routes.",
+  },
+  {
+    href: "/support/mobile/run-summary",
+    title: "Run summary",
+    blurb: "Open a run to see its schedule, riders, team and map.",
+  },
+  {
+    href: "/support/mobile/step-by-step",
+    title: "Step by step view",
+    blurb: "Complete a run — check in, inspect, and mark riders picked up or absent.",
+  },
+  {
+    href: "/support/mobile/rider-details",
+    title: "Rider details",
+    blurb: "View a rider's profile — care needs, contacts, school and schedule.",
+  },
+  {
+    href: "/support/mobile/contacts",
+    title: "Contacts",
+    blurb: "Find phone numbers and emails for your organization.",
+  },
+  {
+    href: "/support/mobile/resources",
+    title: "Resources",
+    blurb: "Open forms, documents and school calendars.",
+  },
+  {
+    href: "/support/mobile/account",
+    title: "Account settings",
+    blurb: "Update your profile, choose your map app and log out.",
+  },
+  {
+    href: "/support/mobile/glossary",
+    title: "Icon glossary",
+    blurb: "What each icon in the app means, from care needs to bus staff.",
   },
 ];
 ---
@@ -23,16 +65,17 @@ const sections = [
   <h1>Veza Support and How-tos</h1>
   <span class="eyebrow">Veza Mobile App</span>
   <p class="subtitle">
-    Support for the Veza Mobile App. Pick a section below.
+    Short guides with pictures for the Veza Mobile App. Each one shows what a
+    screen does and how to use it. Pick a topic below.
   </p>
 
   <ul class="card-list">
-    {sections.map((s) => (
+    {articles.map((a) => (
       <li>
-        <a class="topic" href={s.href}>
+        <a class="topic" href={a.href}>
           <div class="topic-body">
-            <h2 class="topic-title">{s.title}</h2>
-            <p class="topic-blurb">{s.blurb}</p>
+            <h2 class="topic-title">{a.title}</h2>
+            <p class="topic-blurb">{a.blurb}</p>
           </div>
           <span class="topic-arrow" aria-hidden="true">→</span>
         </a>

@@ -1,0 +1,35 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+
+// Callout items for the annotated screenshot (image to come).
+const items = [
+  "<strong>Step by Step view</strong> — tap here to enter the Step by Step view, where you can complete run actions and mark riders picked up or absent.",
+  "<strong>Run Menu</strong> — tap here to find run actions. You can come here to view riders, resources, team information and more.",
+  "<strong>Map View</strong> — tap here to see a full-screen map view of the run, including stops and other details.",
+  "<strong>Rider and Team shortcuts</strong> — tap these icons to quickly view team members and rider information.",
+];
+---
+
+<HelpLayout
+  title="Run summary"
+  description="See the full schedule and details of a run in the Veza Mobile App."
+  back="/support/mobile"
+>
+  <h1>Run summary</h1>
+
+  <p class="overview">
+    Tap any run tile to open the <strong>Run Summary</strong> screen. It shows
+    the full run schedule along with key details such as rider and team
+    information and a map view of the route — a high-level overview of the run
+    before and after it is completed.
+  </p>
+
+  <p>
+    If you select an active run, you will land on the <strong>Step by
+    Step</strong> view, but you can come back to the <strong>Summary</strong>
+    view any time using the tabs at the top of the screen.
+  </p>
+
+  <!-- PLACEHOLDER: numbered screenshot + <Annotated items={items}> -->
+  <div class="placeholder">Screenshots coming soon</div>
+</HelpLayout>
