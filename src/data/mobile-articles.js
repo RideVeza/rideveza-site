@@ -58,6 +58,12 @@ const entries = [
     ready: false,
   },
   {
+    slug: "routes",
+    title: "Assigned routes",
+    blurb: "See each route's weekly schedule, details and pay.",
+    ready: true,
+  },
+  {
     slug: "contacts",
     title: "Contacts",
     blurb: "Find phone numbers and emails for your organization.",

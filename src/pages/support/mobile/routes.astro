@@ -1,0 +1,78 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
+
+const scheduleItems = [
+  "<strong>Route menu</strong> — open the route's details, including its pay details.",
+  "<strong>Day and shift</strong> — pick a day of the week and a shift to see that day's run schedule.",
+  "<strong>Stops, riders and team</strong> — the number of stops and riders on the run, and the team assigned to it.",
+  "<strong>Map</strong> — see the run's stops on a map.",
+  "<strong>Schedule</strong> — the run's timeline for that day: check-in, pre-trip inspection, start of trip, and each stop with its riders and time.",
+];
+
+const detailsItems = [
+  "<strong>Route information</strong> — the route's ID, status, school, unit, and its start and end dates.",
+  "<strong>Pay Details</strong> — tap to see how the route pays.",
+];
+
+const payItems = [
+  "<strong>Base rate</strong> — what you are paid per run on this route.",
+  "<strong>Shifts</strong> — the shifts the rate applies to.",
+  "<strong>Add-ons</strong> — extra pay on top of the base rate, such as fuel compensation.",
+];
+---
+
+<HelpLayout
+  title="Assigned routes"
+  description="See each route's weekly schedule, details and pay in the Veza Mobile App."
+  back="/support/mobile"
+  wide
+>
+  <h1>Assigned routes</h1>
+
+  <p class="overview">
+    Your assigned routes are shown at the bottom of your Run Dashboard. Tap a
+    route card to explore its weekly schedule, its details and how it pays.
+  </p>
+
+  <section class="screen">
+    <h2 class="screen__title">Route schedule</h2>
+    <p class="screen__lead">
+      The route's schedule shows what a day on the route looks like, before the
+      day's run is created.
+    </p>
+    <Annotated
+      src="/images/support/mobile/routes/schedule-annotated.png"
+      alt="A route's schedule screen, with numbered callouts pointing to each feature."
+      ratio="2072 / 3664"
+      items={scheduleItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title">Route details</h2>
+    <p class="screen__lead">
+      Open the route menu to see the route's details.
+    </p>
+    <Annotated
+      src="/images/support/mobile/routes/route-details-annotated.png"
+      alt="The Route Details screen, with numbered callouts pointing to the route information and Pay Details."
+      ratio="2072 / 3664"
+      items={detailsItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title">Pay details</h2>
+    <p class="screen__lead">
+      From Route Details, tap <strong>Pay Details</strong> to see what the
+      route pays.
+    </p>
+    <Annotated
+      src="/images/support/mobile/routes/pay-details-annotated.png"
+      alt="The Pay Details screen, with numbered callouts pointing to the base rate, shifts and add-ons."
+      ratio="2072 / 3664"
+      items={payItems}
+    />
+  </section>
+</HelpLayout>
