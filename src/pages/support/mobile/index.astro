@@ -1,16 +1,35 @@
 ---
+import fs from "node:fs";
 import HelpLayout from "../../../layouts/HelpLayout.astro";
 import { articles } from "../../../data/mobile-articles.js";
 
-// Draft articles show greyed in dev so we can keep working on them, but are
-// dropped from production builds (their pages are pruned in astro.config.mjs).
-const shown = import.meta.env.PROD ? articles.filter((a) => a.ready) : articles;
+// Build-time guard: every sibling guide page must have a card here, and every
+// card must resolve to a guide page or a static page under public/. Throwing
+// in frontmatter fails the build, so drift can't ship silently.
+const guidePages = new Set(
+  Object.keys(import.meta.glob("./*.astro"))
+    .map((p) => p.replace("./", "").replace(".astro", ""))
+    .filter((s) => s !== "index")
+);
+const cardSlugs = new Set(
+  articles.map((a) => a.href.replace("/support/mobile/", "").replaceAll("/", ""))
+);
+for (const slug of guidePages) {
+  if (!cardSlugs.has(slug)) {
+    throw new Error(`Guide /support/mobile/${slug} has no card in src/data/mobile-articles.js`);
+  }
+}
+for (const slug of cardSlugs) {
+  if (!guidePages.has(slug) && !fs.existsSync(`public/support/mobile/${slug}/index.html`)) {
+    throw new Error(`Card "/support/mobile/${slug}" in src/data/mobile-articles.js has no matching page`);
+  }
+}
 ---
 
 <HelpLayout
   title="Mobile App Support"
-  description="Support for the Veza Mobile App."
-  home="/support/mobile"
+  description="Guides and support for the Veza Mobile App."
+  home="/support/mobile/"
 >
   <h1>Veza Guides and Support</h1>
   <span class="eyebrow">Veza Mobile App</span>
@@ -20,14 +39,13 @@ const shown = import.meta.env.PROD ? articles.filter((a) => a.ready) : articles;
   </p>
 
   <ul class="card-list">
-    {shown.map((a) => (
+    {articles.map((a) => (
       <li>
-        <a class:list={["topic", { "topic--draft": !a.ready }]} href={a.href}>
+        <a class="topic" href={a.href}>
           <div class="topic-body">
             <h2 class="topic-title">{a.title}</h2>
             <p class="topic-blurb">{a.blurb}</p>
           </div>
-          {!a.ready && <span class="draft-tag">Draft</span>}
           <span class="topic-arrow" aria-hidden="true">→</span>
         </a>
       </li>
@@ -45,20 +63,4 @@ const shown = import.meta.env.PROD ? articles.filter((a) => a.ready) : articles;
     gap: 18px;
   }
 
-  /* Unfinished guides: visible in dev only, greyed out. */
-  .topic--draft {
-    filter: grayscale(1);
-    opacity: 0.55;
-  }
-
-  .draft-tag {
-    flex: none;
-    align-self: center;
-    padding: 4px 10px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--muted);
-  }
 </style>
