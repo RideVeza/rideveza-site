@@ -158,6 +158,12 @@ header.page {
 .group-blurb {
   color: var(--muted);
   font-size: 0.9rem;
+  /* Truncate on narrow screens rather than squeezing the checks pill. */
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .count {
