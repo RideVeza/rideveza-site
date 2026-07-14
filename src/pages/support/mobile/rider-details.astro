@@ -1,11 +1,14 @@
 ---
 import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
 
-// Callout items for the annotated screenshot (image to come).
 const items = [
-  "<strong>Care plan</strong> — tap here to find detailed information on rider medical and equipment needs.",
-  "<strong>Contacts</strong> — rider contacts, including both emergency and non-emergency contacts.",
-  "<strong>Additional detail</strong> — more details can be found here, including schedule and school information.",
+  "<strong>Name and address</strong> — the rider, and the address of their stop.",
+  "<strong>Alerts</strong> — the rider's alerts, such as care needs or a medical condition. See the <a href=\"/support/mobile/glossary\">icon glossary</a> for what each icon means, or tap the row for the rider's care plan.",
+  "<strong>Care note</strong> — what the rider needs on the bus, such as equipment or medication.",
+  "<strong>Contacts</strong> — the rider's guardians. Tap a contact for their details, including their phone number.",
+  "<strong>Primary</strong> — marks the rider's primary contact.",
+  "<strong>Emergency contacts</strong> — who to reach if the rider's contacts cannot be reached.",
 ];
 ---
 
@@ -13,21 +16,19 @@ const items = [
   title="Rider details"
   description="View a rider's profile in the Veza Mobile App."
   back="/support/mobile"
+  wide
 >
   <h1>Rider details</h1>
 
   <p class="overview">
-    You can open a rider's profile from your assigned runs by tapping any rider
-    tile. This screen shows the rider's name, photo, address, care indicators
-    and key safety information.
+    Tap any rider on a run to open their profile — their care needs, contacts
+    and key safety information, so you can support each rider safely.
   </p>
 
-  <p>
-    From here, you can view guardian and emergency contacts, review care needs,
-    and check schedule and school details — helping you support each rider
-    safely and consistently during your route.
-  </p>
-
-  <!-- PLACEHOLDER: numbered screenshot + <Annotated items={items}> -->
-  <div class="placeholder">Screenshots coming soon</div>
+  <Annotated
+    src="/images/support/mobile/rider-details/rider-details-annotated.png"
+    alt="A rider's profile, with numbered callouts pointing to the rider's care information and contacts."
+    ratio="2060 / 3664"
+    items={items}
+  />
 </HelpLayout>

@@ -43,19 +43,19 @@ const entries = [
     slug: "run-summary",
     title: "Run summary",
     blurb: "Open a run to see its schedule, riders, team and map.",
-    ready: false,
+    ready: true,
   },
   {
     slug: "step-by-step",
     title: "Step by step view",
     blurb: "Complete a run — check in, inspect, and mark riders picked up or absent.",
-    ready: false,
+    ready: true,
   },
   {
     slug: "rider-details",
     title: "Rider details",
     blurb: "View a rider's profile — care needs, contacts, school and schedule.",
-    ready: false,
+    ready: true,
   },
   {
     slug: "routes",

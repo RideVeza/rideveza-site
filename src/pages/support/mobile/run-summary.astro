@@ -1,12 +1,64 @@
 ---
 import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
 
-// Callout items for the annotated screenshot (image to come).
-const items = [
-  "<strong>Step by Step view</strong> — tap here to enter the Step by Step view, where you can complete run actions and mark riders picked up or absent.",
-  "<strong>Run Menu</strong> — tap here to find run actions. You can come here to view riders, resources, team information and more.",
-  "<strong>Map View</strong> — tap here to see a full-screen map view of the run, including stops and other details.",
-  "<strong>Rider and Team shortcuts</strong> — tap these icons to quickly view team members and rider information.",
+// TODO: add sections for the remaining run options pages (Schedule,
+// Resources, Correct assigned unit, Pay summary) when their images land.
+const summaryItems = [
+  "<strong>Step by Step / Summary toggle</strong> — switch between the run's summary and completing it step by step.",
+  "<strong>Run options</strong> — opens the run options menu, with more detail about the run.",
+  "<strong>Run banner</strong> — the run's name, vehicle, time window and date.",
+  "<strong>Stops, riders and team</strong> — the number of stops and riders on the run, and the team working it. Tap any of these icons for more detail on the <a href=\"#riders\">riders</a> and <a href=\"#team\">team</a>.",
+  "<strong><a href=\"#map-view\">Map</a></strong> — see the run on a map.",
+  "<strong>Run schedule</strong> — every step of the run in order, from check-in to the last stop.",
+  "<strong>Scheduled time</strong> — when each step is scheduled.",
+];
+
+const completedItems = [
+  "<strong>Completed</strong> — the run's status once every step is done.",
+  "<strong>Progress bar</strong> — fully filled in.",
+  "<strong>Your pay</strong> — what you earned from this run. Tap <strong>View pay summary</strong> for the breakdown, and let your organization know within 24 hours if it doesn't look right.",
+  "<strong>Actual times</strong> — your actual time for each step, beside its scheduled time. Green for early or on time, red for late.",
+];
+
+const optionsItems = [
+  "<strong>Schedule</strong> — the run's full schedule, identical to the one on the main summary screen.",
+  "<strong><a href=\"#riders\">Riders</a></strong> — every rider on the run.",
+  "<strong><a href=\"#team\">Team</a></strong> — everyone working the run.",
+  "<strong>Resources</strong> — forms and documents for the run, including your pre-trip inspection record.",
+  "<strong><a href=\"#correct-assigned-unit\">Correct assigned unit</a></strong> — if the run thinks you are in a different vehicle, update it to the one you are actually driving.",
+  "<strong><a href=\"#pay-summary\">Pay summary</a></strong> — how the run pays.",
+  "<strong>Mark all students absent</strong> — mark every rider on the run absent at once. Useful when you know no one is riding — it saves marking each rider through the Step by Step view.",
+];
+
+const ridersItems = [
+  "<strong>Search</strong> — find a rider by name.",
+  "<strong>Rider card</strong> — a rider on the run, with their stop address. Tap the card for their <a href=\"/support/mobile/rider-details\">details</a>.",
+  "<strong>Alerts</strong> — the rider's alerts at a glance, such as care needs or a medical condition. See the <a href=\"/support/mobile/glossary\">icon glossary</a> for what each icon means.",
+  "<strong>Rider notes</strong> — the rider's equipment, and whether a guardian is required.",
+];
+
+const teamItems = [
+  "<strong>Team member</strong> — tap for more detail about them, including their contact information.",
+  "<strong>Name</strong> — who is working the run.",
+  "<strong>Role</strong> — their role on the run: driver, attendant, LPN or supervisor.",
+];
+
+const correctUnitItems = [
+  "<strong>Search</strong> — find a vehicle by its unit number.",
+  "<strong>Unit card</strong> — a vehicle in your fleet. Tap it to make it your assigned unit for the run. This only changes this run — not your route.",
+];
+
+const paySummaryItems = [
+  "<strong>Rate name</strong> — the pay rate applied to the run, such as the base rate or an add-on like fuel compensation.",
+  "<strong>Amount</strong> — what that rate pays per run.",
+  "<strong>Estimated total</strong> — your estimated pay for the run. The amounts are updated once you check out.",
+];
+
+const mapItems = [
+  "<strong>Map controls</strong> — change the map style, or re-centre the map on the run.",
+  "<strong>School</strong> — the run's school.",
+  "<strong>Stops</strong> — every stop on the run, numbered in order, connected by the route. Tap any marker for more information about the stop.",
 ];
 ---
 
@@ -14,22 +66,134 @@ const items = [
   title="Run summary"
   description="See the full schedule and details of a run in the Veza Mobile App."
   back="/support/mobile"
+  wide
 >
   <h1>Run summary</h1>
 
   <p class="overview">
-    Tap any run tile to open the <strong>Run Summary</strong> screen. It shows
-    the full run schedule along with key details such as rider and team
-    information and a map view of the route — a high-level overview of the run
-    before and after it is completed.
+    Tap any run to open its <strong>Summary</strong> — the full run schedule
+    along with key details such as rider and team information and a map of the
+    route. If you land on the <a href="/support/mobile/step-by-step">Step by
+    Step</a> view instead, you can switch to the summary at any time using the
+    tabs at the top of the screen.
   </p>
 
-  <p>
-    If you select an active run, you will land on the <strong>Step by
-    Step</strong> view, but you can come back to the <strong>Summary</strong>
-    view any time using the tabs at the top of the screen.
-  </p>
+  <section class="screen">
+    <h2 class="screen__title">The summary at a glance</h2>
+    <p class="screen__lead">
+      Everything about the run on one screen — its schedule, stops, riders,
+      team and map.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-summary/summary.png"
+      alt="The run summary screen, with numbered callouts pointing to each feature."
+      ratio="2072 / 3664"
+      items={summaryItems}
+    />
+  </section>
 
-  <!-- PLACEHOLDER: numbered screenshot + <Annotated items={items}> -->
-  <div class="placeholder">Screenshots coming soon</div>
+  <section class="screen">
+    <h2 class="screen__title">After the run is completed</h2>
+    <p class="screen__lead">
+      Once the run is complete, the summary also shows how the run went — and
+      what you earned.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-summary/summary-completed.png"
+      alt="The summary of a completed run, showing a Completed badge, pay earned, and actual times beside scheduled times."
+      ratio="2072 / 3664"
+      items={completedItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title">The run options</h2>
+    <p class="screen__lead">
+      Open the run options from the menu button at the top of the screen.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-summary/options.png"
+      alt="The run options menu, listing Schedule, Riders, Team, Resources, Correct assigned unit, Pay summary and Mark all students absent."
+      ratio="2072 / 3664"
+      items={optionsItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title" id="riders">Riders</h2>
+    <p class="screen__lead">
+      Everyone riding on the run, with their alerts and care information.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-summary/riders.png"
+      alt="The Riders screen, listing each rider on the run with their address and alerts."
+      ratio="2072 / 3664"
+      items={ridersItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title" id="team">Team</h2>
+    <p class="screen__lead">
+      Everyone working the run and their role.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-summary/team.png"
+      alt="The Team screen, listing an attendant, a driver and a supervisor, with numbered callouts."
+      ratio="2060 / 3664"
+      items={teamItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title" id="correct-assigned-unit">Correct assigned unit</h2>
+    <p class="screen__lead">
+      If the run has you in the wrong vehicle, pick the unit you are actually
+      driving and your assignment updates.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-summary/correct-unit.png"
+      alt="The Correct Assigned Unit screen, with a search field and a list of vehicles to choose from."
+      ratio="2072 / 3664"
+      items={correctUnitItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title" id="pay-summary">Pay summary</h2>
+    <p class="screen__lead">
+      What the run pays — before the run it is an estimate, and the amounts
+      are finalized once you check out.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-summary/pay-summary.png"
+      alt="The Pay summary screen, showing the base rate, an add-on and the estimated total."
+      ratio="2076 / 3664"
+      items={paySummaryItems}
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title" id="map-view">Map view</h2>
+    <p class="screen__lead">
+      See the whole run on a map — the route, each stop in order, and the
+      school.
+    </p>
+    <Annotated
+      src="/images/support/mobile/run-summary/map.png"
+      alt="The Map View, showing the run's route through the city with numbered stops and the school."
+      ratio="2060 / 3664"
+      items={mapItems}
+    />
+  </section>
 </HelpLayout>
+
+<style>
+  .shot {
+    margin: 16px 0 0;
+  }
+
+  .shot .phone {
+    margin: 0;
+  }
+</style>
