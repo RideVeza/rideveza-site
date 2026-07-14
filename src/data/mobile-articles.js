@@ -53,6 +53,11 @@ export const articles = [
     blurb: "Open forms, documents and school calendars.",
   },
   {
+    href: "/support/mobile/forms/",
+    title: "Forms",
+    blurb: "Fill in a form section by section, review your answers and submit.",
+  },
+  {
     href: "/support/mobile/account/",
     title: "Account settings",
     blurb: "Update your profile, choose your map app and log out.",
