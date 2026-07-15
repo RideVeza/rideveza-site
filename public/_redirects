@@ -1,2 +1,6 @@
 # Old help URLs (linked from sent newsletters) moved under /support.
 /help/*  /support/:splat  301
+
+# The guardian Children tab was renamed to Riders.
+/support/guardian/children/* /support/guardian/riders/:splat 301
+/support/guardian/children /support/guardian/riders 301
