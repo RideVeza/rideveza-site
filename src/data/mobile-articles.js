@@ -58,6 +58,11 @@ export const articles = [
     blurb: "Fill in a form section by section, review your answers and submit.",
   },
   {
+    href: "/support/mobile/expenses-time-off/",
+    title: "Expenses & time off",
+    blurb: "Request time off and submit expenses for reimbursement.",
+  },
+  {
     href: "/support/mobile/account/",
     title: "Account settings",
     blurb: "Update your profile, choose your map app and log out.",

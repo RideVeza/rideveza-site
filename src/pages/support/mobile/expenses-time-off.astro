@@ -1,0 +1,187 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
+
+const findItems = [
+  "<strong><a href=\"#time-off\">Time Off Request</a></strong> — request time off from your organization, and see the requests you have already sent.",
+  "<strong><a href=\"#expense-reports\">Expense Reimbursement</a></strong> — submit expenses to your organization and get paid back.",
+];
+
+const timeOffListItems = [
+  "<strong>Request</strong> — a request you have sent, with its type — such as Medical or Vacation — and its dates. Tap it to see its status and any notes from your organization.",
+  "<strong>Status</strong> — where the request stands. <strong>Submitted</strong> means it is with your organization; it becomes <strong>Approved</strong> or <strong>Declined</strong> once they respond.",
+  "<strong>New Request</strong> — start a new time off request.",
+];
+
+const timeOffFormItems = [
+  "<strong>Type</strong> — the kind of time off you are requesting, such as Vacation or Medical.",
+  "<strong>All day</strong> — turn this on to request whole days. Leave it off to pick exact times.",
+  "<strong>Start and End</strong> — when your time off begins and ends. With <strong>All day</strong> off, set the time as well as the date.",
+  "<strong>Note</strong> — anything your organization should know about the request.",
+  "<strong>Review</strong> — check the request over, then submit it.",
+];
+
+const expenseListItems = [
+  "<strong>Report</strong> — a report you have sent, with its total and the date you submitted it. Tap it to see its status and any notes from your organization.",
+  "<strong>Status</strong> — where the report stands. <strong>Submitted</strong> means it is with your organization; it becomes <strong>Approved</strong> or <strong>Declined</strong> once they respond.",
+  "<strong>New Request</strong> — start a new expense report.",
+];
+
+const expenseReportItems = [
+  "<strong>Expense</strong> — an expense in this report, with its amount, description, date and receipt.",
+  "<strong>Add Another</strong> — add another expense to the same report.",
+  "<strong>Review</strong> — check the report over, then submit it.",
+];
+
+const addExpenseItems = [
+  "<strong>Unit</strong> — the vehicle the expense is for, if it is for one.",
+  "<strong>Date, Total and Type</strong> — when you paid, how much, and what kind of expense it was. A <strong>*</strong> marks a required field.",
+  "<strong>Add Photo Receipt</strong> — photograph your receipt and attach it to the expense.",
+  "<strong>Description</strong> — what the expense was for, in your own words.",
+  "<strong>Save</strong> — save the expense and return to the report.",
+];
+---
+
+<HelpLayout
+  title="Expenses & time off"
+  description="Request time off and submit expense reports for reimbursement in the Veza Mobile App."
+  back="/support/mobile/"
+  wide
+>
+  <h1>Expenses &amp; time off</h1>
+
+  <p class="overview">
+    Request time off and submit expenses for reimbursement, straight from the
+    app. Both live in the <strong>Resources</strong> tab, and both work the
+    same way: fill in a short form, review it, and send it to your
+    organization.
+  </p>
+
+  <section class="screen">
+    <h2 class="screen__title">Where to find them</h2>
+    <p class="screen__lead">
+      Open the <strong>Resources</strong> tab in the bottom navigation bar.
+      <strong>Time Off Request</strong> and
+      <strong>Expense Reimbursement</strong> each have their own row.
+    </p>
+    <Annotated
+      src="/images/support/mobile/expenses-time-off/resources-entries.png"
+      alt="The Resources tab, with the Time Off Request and Expense Reimbursement rows highlighted in the list."
+      ratio="2072 / 3664"
+      items={findItems}
+    />
+  </section>
+
+  <section class="part" id="time-off">
+    <h2 class="part__title">Time off</h2>
+    <p class="part__lead">
+      Request time off — a vacation, a medical day — and keep track of the
+      requests you have sent.
+    </p>
+
+    <section class="screen">
+      <h3 class="screen__title">Your time off requests</h3>
+      <p class="screen__lead">
+        Tap <strong>Time Off Request</strong> to see every request you have
+        sent, and to start a new one.
+      </p>
+    <Annotated
+      src="/images/support/mobile/expenses-time-off/time-off-list.png"
+      alt="The Time Off Requests screen — a Medical request and a Vacation request, each with its dates and a Submitted badge, and a New Request button at the bottom."
+      ratio="2072 / 3668"
+        items={timeOffListItems}
+      />
+    </section>
+
+    <section class="screen">
+      <h3 class="screen__title">Requesting time off</h3>
+      <p class="screen__lead">
+        A time off request is one short form — what kind of time off, when it
+        starts and ends, and a note for your organization.
+      </p>
+    <Annotated
+      src="/images/support/mobile/expenses-time-off/time-off-request.png"
+      alt="The Time Off Request form — a Type set to Vacation, an All day toggle, Start and End dates with times, a note, and a Review button."
+      ratio="2072 / 3668"
+        items={timeOffFormItems}
+      />
+    </section>
+  </section>
+
+  <section class="part" id="expense-reports">
+    <h2 class="part__title">Expense reports</h2>
+    <p class="part__lead">
+      Paid for something out of pocket? Submit an expense report and get paid
+      back by your organization.
+    </p>
+
+    <section class="screen">
+      <h3 class="screen__title">Your expense reports</h3>
+      <p class="screen__lead">
+        Tap <strong>Expense Reimbursement</strong> to see every expense report
+        you have sent, and to start a new one.
+      </p>
+    <Annotated
+      src="/images/support/mobile/expenses-time-off/expense-reports.png"
+      alt="The Expense Reports screen — two reports with their totals, dates and Submitted badges, and a New Request button at the bottom."
+      ratio="2072 / 3664"
+        items={expenseListItems}
+      />
+    </section>
+
+    <section class="screen">
+      <h3 class="screen__title">An expense report</h3>
+      <p class="screen__lead">
+        A report can hold several related expenses — add each expense, then
+        review and submit them together.
+      </p>
+    <Annotated
+      src="/images/support/mobile/expenses-time-off/expense-report.png"
+      alt="The Expenses screen of an expense report — a $35.99 Washer Fluid expense with its receipt, an Add Another button, and a Review button."
+      ratio="2072 / 3664"
+        items={expenseReportItems}
+      />
+    </section>
+
+    <section class="screen">
+      <h3 class="screen__title">Adding an expense</h3>
+      <p class="screen__lead">
+        Each expense gets its own short form — fill it in, attach the receipt,
+        and save it to the report.
+      </p>
+    <Annotated
+      src="/images/support/mobile/expenses-time-off/add-expense.png"
+      alt="The Add Expense form — a Unit selector, Date, Total and Type fields, an Add Photo Receipt button, a description box, and a Save button."
+      ratio="2072 / 3664"
+        items={addExpenseItems}
+      />
+    </section>
+  </section>
+</HelpLayout>
+
+<style>
+  /* Two halves of the guide — time off and expense reports — each holding
+     its screens. A rule and a larger title mark the start of each half. */
+  .part {
+    margin-top: 56px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+  }
+
+  .part__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: -0.015em;
+    color: var(--navy);
+    margin: 0 0 6px;
+  }
+
+  .part__lead {
+    font-size: 1.02rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .part .screen { margin-top: 36px; }
+</style>
