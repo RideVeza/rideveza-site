@@ -33,6 +33,7 @@ import fs from "node:fs/promises";
 import { createReadStream } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import astroConfig from "../astro.config.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(ROOT, "dist");
@@ -40,6 +41,17 @@ const DIST = path.join(ROOT, "dist");
 // Chromium spends most of its time rasterising, which parallelises well. Four
 // pages is where the wall-clock gain flattens out on a typical laptop.
 const POOL = 4;
+
+// Chromium resolves a link against the address it loaded the page from, and
+// writes the result into the PDF as an absolute URL. Served from a throwaway
+// local server, that means every internal link lands on a dead 127.0.0.1 port
+// once the build finishes. Pointing them at the real origin first makes them
+// work for good — which matters, since these are read on screen as often as
+// on paper.
+const SITE = astroConfig.site?.replace(/\/$/, "");
+if (!SITE) {
+  console.warn("[pdf] no `site` in astro.config.mjs — internal links will point at the build server.");
+}
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
@@ -159,12 +171,21 @@ const footer = (label) => `
 async function render(page, { href, route }, port) {
   await page.goto(`http://127.0.0.1:${port}${route}/`, { waitUntil: "load" });
 
-  await page.evaluate(async () => {
+  await page.evaluate(async (site) => {
     // Screenshots are lazy-loaded; a PDF has no viewport to scroll, so promote
     // them to eager and wait for every one to actually decode before rendering.
     document.querySelectorAll("img[loading='lazy']").forEach((img) => {
       img.loading = "eager";
     });
+
+    // Root-relative links only: anything already absolute is either an outside
+    // reference or points at the real site, and // is protocol-relative.
+    if (site) {
+      document.querySelectorAll('a[href^="/"]').forEach((a) => {
+        const href = a.getAttribute("href");
+        if (!href.startsWith("//")) a.setAttribute("href", site + href);
+      });
+    }
 
     // Collapsed <details> render as a closed row, so their contents would be
     // missing from the PDF entirely — on the passkey guide that is the whole
@@ -177,7 +198,7 @@ async function render(page, { href, route }, port) {
       [...document.images].map((img) => (img.complete ? null : img.decode().catch(() => {}))),
     );
     await document.fonts.ready;
-  });
+  }, SITE);
 
   const title = (await page.title()).replace(/ · Veza$/, "");
   const out = path.join(DIST, href.slice(1));
