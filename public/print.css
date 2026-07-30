@@ -1,0 +1,167 @@
+/* Print styles — these are what scripts/build-pdfs.mjs renders into the
+   downloadable PDFs, and also what you get if someone hits Cmd-P directly.
+
+   The page is meant to print as it looks on screen. The only jobs here are
+   swapping the screen chrome for a paper masthead and telling the browser
+   which blocks must not be cut in half by a page break. Nothing restyles a
+   component.
+
+   It lives in public/ rather than src/styles/ because two of the mobile
+   guides — account-setup and download-app — are hand-written HTML under
+   public/support/mobile/ and link this file directly. A bundled import would
+   have left them with no print styles at all. */
+
+/* The download button itself is an ordinary screen component and lives with
+   the other pills in veza-ui.css. Only its absence on paper is this file's
+   business. */
+
+/* Masthead that only exists on paper. */
+.print-head { display: none; }
+
+/* ---------- On paper ---------- */
+
+@media print {
+  /* Playwright renders with preferCSSPageSize, so this rule is the single
+     source of truth for paper size and margins.
+
+     The side margins are what they are for a reason. Chromium lays the page
+     out at the printable width, so on Letter 14mm margins give a 710px
+     viewport — under the 720px breakpoint where .annotated stacks and the
+     page quietly switches to its mobile form. 6mm gives 771px, comfortably
+     clear of that, and the extra width matters most on the `wide` guides:
+     their .wrap is capped at 820px, so it fills whatever it is given and the
+     content genuinely gets wider rather than just better centred.
+
+     These are page margins, not text margins. .wrap adds 18px of its own
+     padding, and on a narrow guide its 680px cap leaves ~12mm of slack each
+     side, so text sits ~23mm from the paper edge there and ~11mm on a wide
+     one — inside any desk printer's unprintable border either way.
+
+     Measured across the whole section, tightening from 14/10/16 to 10/6/12
+     took the output from 142 pages to 128, and the two worst guides — step
+     by step and the live map — each lost a page. Going tighter still gains
+     nothing: 5mm side margins produce the identical 128. The bottom margin
+     stays deepest to hold the page-number footer the script draws. */
+  @page {
+    size: Letter;
+    margin: 10mm 6mm 12mm;
+  }
+
+  /* `html body`, not `body`: veza-ui.css sets the grey --page-bg on a bare
+     `body` selector, and it arrives as a <link> while this file is bundled by
+     Astro, so the two can land in either order in <head>. The extra element
+     bumps specificity above it and makes the result order-independent —
+     otherwise the grey leaks through as a band across the foot of the page. */
+  html, html body {
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Two things paper cannot represent, dropped everywhere at once.
+
+     Shadows: Chromium writes a blurred box-shadow into the PDF as a flat,
+     unblurred rectangle, so the soft lift under a card comes out as a grey
+     slab beside it and the ring around a step numeral as a lilac square.
+     Every card also has a border, which carries its shape on its own.
+
+     Motion: nothing on paper is mid-animation, and capturing a PDF part-way
+     through one clips it — the accordions further down reveal themselves by
+     animating a height.
+
+     !important because the component styles are Astro-scoped and outrank
+     anything this file could say otherwise. */
+  *, *::before, *::after {
+    box-shadow: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Screen chrome off, paper chrome on. .topbar is the back-pill/button row
+     on the two static guides; hiding only its children would leave the empty
+     row still holding its margin. */
+  .back,
+  .brand,
+  .pdf,
+  .topbar,
+  footer.page { display: none !important; }
+
+  body header.page {
+    display: block;
+    min-height: 0;
+  }
+
+  .print-head { display: block; }
+  .print-head img { height: 28px; width: auto; display: block; }
+
+  /* On the static guides the masthead is a sibling of the <header>, not inside
+     it, so it has nothing between it and the title. */
+  .wrap > .print-head { margin-bottom: 6mm; }
+
+  /* .wrap reserves 72px under the content to clear the footer, and the footer
+     is hidden above — so on paper that is 54pt of empty space trailing the
+     last card. It is enough to tip a guide that ends near a page boundary
+     onto an extra, entirely blank sheet. The @page margin already provides
+     the bottom edge. */
+  body .wrap { padding-bottom: 0; }
+
+  /* A closed <details> would print as a bare row with its contents dropped —
+     on the passkey guide that is the entire per-device checklist. The build
+     script opens them before rendering, and this does the same for anyone who
+     just hits Cmd-P, where no script runs. */
+  details::details-content {
+    height: auto !important;
+    overflow: visible !important;
+    content-visibility: visible !important;
+  }
+
+  /* ---------- What must not be split ---------- */
+
+  /* A step, a note, a topic card, an annotated screenshot: each is one white
+     card, and a card either fits on the page or moves to the next one whole.
+     Same for a legend row and any standalone image. */
+  .step,
+  .note,
+  .topic,
+  .annotated,
+  .legend__list li,
+  .reqs li,
+  figure,
+  img,
+  /* Equivalents on the two static guides. Note .group is deliberately absent:
+     an expanded accordion is a container of many rows, not a single card, and
+     holding one together strands most of a page. Its rows group instead. */
+  .check-item,
+  .check-sec,
+  .compare-item,
+  .fix,
+  .pstep { break-inside: avoid; page-break-inside: avoid; }
+
+  /* A whole section travels as one: its title, the line of subtext under it
+     and the screenshot they introduce. Splitting a heading away from the
+     picture it describes is the one break that actually costs the reader
+     something. Where a section is simply taller than a page the browser
+     ignores this and breaks inside it, which is the right fallback. */
+  .screen { break-inside: avoid; page-break-inside: avoid; }
+
+  /* A heading stays with the text it introduces, and a paragraph never leaves
+     one or two stray lines behind on the previous page. */
+  h1, h2, h3,
+  .screen__title,
+  .topic-title,
+  .section-head {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* The lead paragraph belongs to what follows it, not to what came before —
+     this is what keeps a section intact on the static guides, which have no
+     wrapping element to hang break-inside on. */
+  .screen__lead,
+  .section-lead {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  p, li { orphans: 3; widows: 3; }
+}

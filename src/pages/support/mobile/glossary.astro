@@ -61,6 +61,7 @@ const entries = [
   title="Icon glossary"
   description="What each icon in the Veza Mobile App means."
   back="/support/mobile/"
+  pdf
 >
   <h1>Icon glossary</h1>
 
@@ -157,6 +158,44 @@ const entries = [
     }
     .entry__icon {
       width: 112px;
+    }
+  }
+
+  /* A glossary is only worth printing if the whole table is on one sheet —
+     flipping back and forth to look up an icon defeats the point. At screen
+     size these ten rows run to 1046pt against 707pt of printable page.
+
+     The icon is not what costs the height: at 60px it stands 45pt tall while
+     the text beside it is 44pt on one line and 60pt on two, so shrinking the
+     image alone saves 6pt of the 339pt needed. The row padding is the real
+     expense — 22px top and bottom on every row is 330pt of white space by
+     itself. So the padding comes down first, the icon and type follow, and
+     the table lands at 671pt. That leaves ~36pt spare, which is less than one
+     row: adding an entry here will need these numbers revisited.
+
+     The guardian glossary carries the same block, tuned to the same numbers —
+     change one and check the other. */
+  @media print {
+    .entry {
+      padding: 8px 0;
+      gap: 18px;
+    }
+
+    .entry__icon {
+      width: 92px;
+    }
+
+    .entry__icon img {
+      height: 24px;
+    }
+
+    .entry__title {
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+
+    .entry__desc {
+      font-size: 0.82rem;
     }
   }
 </style>

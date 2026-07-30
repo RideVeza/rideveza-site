@@ -3,7 +3,19 @@ import "../styles/help.css";
 
 // back: a URL → shows a back pill instead of the logo. wide: 820px tour pages.
 // home: where the brand logo links when there's no back pill.
-const { title, description = "", back, backLabel = "‹ Back to all guides", wide = false, home = "/support/guardian" } = Astro.props;
+// pdf: adds a download button for this page's own PDF.
+// pdfSection: instead adds one for every guide in the section, bound together.
+// Both files are built by scripts/build-pdfs.mjs.
+// backLabel carries no chevron: the pill renders its own, so it can be sized.
+const { title, description = "", back, backLabel = "Back to all guides", wide = false, home = "/support/guardian", pdf = false, pdfSection = false } = Astro.props;
+
+// /support/guardian/signing-in/ → /pdf/support/guardian/signing-in.pdf
+// /support/guardian/            → /pdf/support/guardian.pdf
+// scripts/build-pdfs.mjs builds whatever these links ask for, so the two
+// cannot disagree about which PDFs exist. data-pdf tells it which kind this
+// is: a page to render, or a section to bind together.
+const pdfHref = `/pdf${Astro.url.pathname.replace(/\/$/, "")}.pdf`;
+const pdfLabel = pdfSection ? "Download all guides" : "Download PDF";
 ---
 
 <!doctype html>
@@ -16,17 +28,40 @@ const { title, description = "", back, backLabel = "‹ Back to all guides", wid
     {description && <meta name="description" content={description} />}
     <link rel="icon" href="/favicon.svg" />
     <link rel="stylesheet" href="/veza-ui.css" />
+    {/* public/, not a bundled import: the two static guides under
+        public/support/mobile/ link the same file. */}
+    <link rel="stylesheet" href="/print.css" />
   </head>
   <body>
     <div class:list={["wrap", { "wrap--wide": wide }]}>
       <header class="page">
         {back ? (
-          <a class="back" href={back}>{backLabel}</a>
+          <a class="back" href={back}><span class="back__chev" aria-hidden="true">‹</span>{backLabel}</a>
         ) : (
           <a class="brand" href={home}>
             <img src="/veza-logo.svg" alt="Veza" />
           </a>
         )}
+
+        {(pdf || pdfSection) && (
+          <a
+            class="pdf"
+            href={pdfHref}
+            download={`Veza — ${title}.pdf`}
+            data-pdf={pdfSection ? "section" : "page"}
+            aria-label={pdfLabel}
+          >
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1.5v8.5m0 0L4.75 6.75M8 10l3.25-3.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 11.5v1.25A1.75 1.75 0 0 0 3.75 14.5h8.5A1.75 1.75 0 0 0 14 12.75V11.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span class="pdf__label">{pdfLabel}</span>
+          </a>
+        )}
+
+        <div class="print-head">
+          <img src="/veza-logo.svg" alt="Veza" />
+        </div>
       </header>
 
       <main>

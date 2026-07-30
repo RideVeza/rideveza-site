@@ -92,12 +92,15 @@ h1 {
    surrounding text colour. */
 strong { font-weight: 600; color: var(--navy); }
 
-/* ---------- Back pill (each section sets its own margin) ---------- */
+/* ---------- Pills: back link and PDF download (each section sets its own
+   margin). They sit at opposite ends of the same row and are the same
+   component — keep them defined together so they cannot drift apart. ------- */
 
-.back {
+.back,
+.pdf {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   padding: 8px 16px;
   border-radius: var(--radius-pill);
   background: var(--card-bg);
@@ -109,9 +112,29 @@ strong { font-weight: 600; color: var(--navy); }
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
-.back:hover {
+.back:hover,
+.pdf:hover {
   background: var(--lilac);
   border-color: var(--lavender);
+}
+
+.pdf {
+  white-space: nowrap;
+}
+
+.pdf svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+/* The chevron is its own element so it can carry a size of its own and so the
+   pill's flex `gap` actually applies — as one text node with the label it was
+   a single flex item and the gap did nothing. line-height keeps the larger
+   glyph from stretching the pill. */
+.back__chev {
+  font-size: 1.45em;
+  line-height: 1;
 }
 
 /* ---------- Step-by-step flow (each section sets the list's outer margin) ---------- */
@@ -173,6 +196,10 @@ strong { font-weight: 600; color: var(--navy); }
   .wrap { padding: 22px 14px 64px; }
   h1 { font-size: 1.55rem; }
   .step { flex-direction: column; gap: 14px; padding: 20px; }
+  /* Narrow enough that the back pill and this one would collide: the download
+     icon carries the meaning on its own. */
+  .pdf { padding: 8px 12px; }
+  .pdf__label { display: none; }
 }
 
 /* ---------- Note / tip callout (each section sets its own margin) ---------- */

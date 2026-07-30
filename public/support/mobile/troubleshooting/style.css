@@ -93,6 +93,19 @@ header.page {
 
 /* ---------- Back link (detail pages) — appearance from /veza-ui.css ---------- */
 
+/* Back pill on the left, PDF download button on the right. The margin moves
+   to the row so the two stay on one baseline; the button itself is styled by
+   /print.css, which these pages link for exactly that reason. */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.topbar .back { margin-bottom: 0; }
+
 .back { margin-bottom: 22px; }
 
 /* Index-page brand mark. Pinned to the measured .back height (41.55px =

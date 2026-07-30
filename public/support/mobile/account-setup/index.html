@@ -9,10 +9,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="/support/mobile/troubleshooting/style.css" />
+  <link rel="stylesheet" href="/print.css" />
 </head>
 <body>
   <div class="wrap">
-    <a class="back" href="/support/mobile/">&lsaquo; Back to all guides</a>
+    <div class="topbar">
+      <a class="back" href="/support/mobile/"><span class="back__chev" aria-hidden="true">&lsaquo;</span>Back to all guides</a>
+      <a class="pdf" href="/pdf/support/mobile/account-setup.pdf" data-pdf="page" aria-label="Download PDF" download="Veza &mdash; Setting up your account.pdf">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 1.5v8.5m0 0L4.75 6.75M8 10l3.25-3.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 11.5v1.25A1.75 1.75 0 0 0 3.75 14.5h8.5A1.75 1.75 0 0 0 14 12.75V11.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span class="pdf__label">Download PDF</span>
+      </a>
+    </div>
+
+    <div class="print-head">
+      <img src="/veza-logo.svg" alt="Veza" />
+    </div>
     <header class="page">
       <h1>Setting up your account</h1>
       <p class="subtitle">Your Veza account signs in with a passkey instead of a password. Get your phone ready to make a passkey, then set up your account from your invitation email.</p>

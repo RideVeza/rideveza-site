@@ -1,6 +1,12 @@
 # Netlify build config for the static Astro site.
 [build]
-  command = "npm run build"
+  # scripts/build-pdfs.mjs renders the support guides to PDF with Playwright,
+  # which drives a real Chromium. Installing the npm package does not fetch the
+  # browser — playwright ships no postinstall hook — so the build has to ask
+  # for it or every deploy fails at browser launch. The headless shell is the
+  # binary a headless chromium.launch() actually uses: 195MB against 536MB for
+  # the full browser download, and it renders every PDF identically.
+  command = "npx playwright install chromium-headless-shell && npm run build"
   publish = "dist"
 
 [build.environment]
