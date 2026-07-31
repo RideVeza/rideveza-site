@@ -64,7 +64,7 @@ export const articles = [
   },
   {
     href: "/support/mobile/pay-tracker/",
-    title: "Pay Tracker",
+    title: "Pay tracker",
     blurb: "See what you earned over any range of dates — run pay, holiday pay and approved expenses.",
   },
   {
