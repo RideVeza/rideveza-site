@@ -59,8 +59,13 @@ export const articles = [
   },
   {
     href: "/support/mobile/expenses-time-off/",
-    title: "Expenses & time off",
+    title: "Expenses & Time off",
     blurb: "Request time off and submit expenses for reimbursement.",
+  },
+  {
+    href: "/support/mobile/pay-tracker/",
+    title: "Pay Tracker",
+    blurb: "See what you earned over any range of dates — run pay, holiday pay and approved expenses.",
   },
   {
     href: "/support/mobile/account/",

@@ -6,8 +6,9 @@ const items = [
   "<strong><a href=\"/support/mobile/forms/\">Forms</a></strong> — fill in and submit your organization's forms, such as safety, student care and HR submissions.",
   "<strong><a href=\"/support/mobile/expenses-time-off/\">Time Off Request</a></strong> — request time off from your organization.",
   "<strong><a href=\"/support/mobile/expenses-time-off/\">Expense Reimbursement</a></strong> — submit an expense for reimbursement.",
+  "<strong><a href=\"/support/mobile/pay-tracker/\">Pay Tracker</a></strong> — what you earned over any range of dates: run pay, holiday pay and approved expenses.",
   "<strong>School Calendars</strong> — check each school's calendar for holidays and closures.",
-  "<strong>Documents</strong> — reference documents shared by your organization.",
+  "<strong>Your organization's resources</strong> — reference documents shared with you. This row is named after your organization.",
   "<strong>Veza Resources</strong> — guides and help for using Veza.",
 ];
 ---
@@ -27,10 +28,17 @@ const items = [
     work.
   </p>
 
-  <Annotated
-    src="/images/support/mobile/resources/resources-annotated.png"
-    alt="The Veza Mobile App Resources screen, with numbered callouts pointing to each section."
-    ratio="2072 / 3664"
-    items={items}
-  />
+  <section class="screen">
+    <h2 class="screen__title">What's in the tab</h2>
+    <p class="screen__lead">
+      Every row opens a different tool. Tap one to go straight to it.
+    </p>
+    <Annotated
+      src="/images/support/mobile/resources/resources-annotated.png"
+      alt="The Veza Mobile App Resources screen, with numbered callouts pointing to each row in the list."
+      ratio="2072 / 3668"
+      items={items}
+    />
+  </section>
+
 </HelpLayout>

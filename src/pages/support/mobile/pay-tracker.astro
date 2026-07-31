@@ -1,0 +1,63 @@
+---
+import HelpLayout from "../../../layouts/HelpLayout.astro";
+import Annotated from "../../../components/Annotated.astro";
+
+const payItems = [
+  "<strong>Total Pay</strong> — everything you earned between the two dates below, added up.",
+  "<strong>Start date</strong> and <strong>End date</strong> — the range you are looking at. Set them to whatever you need: a pay period, a single week, one day.",
+  "<strong>What made up the total</strong> — your run pay, your holiday pay and your <a href=\"/support/mobile/expenses-time-off/\">approved expenses</a>, each with its date and amount.",
+];
+---
+
+<HelpLayout
+  title="Pay Tracker"
+  description="See what you earned over any range of dates in the Veza Mobile App."
+  back="/support/mobile/"
+  wide
+  pdf
+>
+  <h1>Pay Tracker</h1>
+
+  <p class="overview">
+    <strong>Pay Tracker</strong> shows what you earned over any range of dates
+    you choose — your run pay, your holiday pay and the expenses that have been
+    approved.
+  </p>
+
+  <section class="screen">
+    <h2 class="screen__title">Where to find it</h2>
+    <p class="screen__lead">
+      Open the <strong>Resources</strong> tab in the bottom navigation bar and
+      tap <strong>Pay Tracker</strong>.
+    </p>
+    <img
+      class="phone"
+      src="/images/support/mobile/pay-tracker/resources-entry.png"
+      alt="The Resources tab in the Veza Mobile App, with the Pay Tracker row outlined."
+      loading="lazy"
+    />
+  </section>
+
+  <section class="screen">
+    <h2 class="screen__title">Your pay over a date range</h2>
+    <p class="screen__lead">
+      The total sits at the top, the dates it covers sit underneath, and below
+      those is every payment that went into it.
+    </p>
+    <Annotated
+      src="/images/support/mobile/pay-tracker/pay-tracker-annotated.png"
+      alt="The Pay Tracker screen, showing a total for the chosen dates, the start and end date pickers, and the run pay and approved expenses that make up the total."
+      ratio="2072 / 3668"
+      items={payItems}
+    />
+  </section>
+
+  <div class="note">
+    <span class="note__icon" aria-hidden="true">i</span>
+    <p>
+      An expense only appears here once it has been approved. Until then you
+      can follow it in
+      <strong><a href="/support/mobile/expenses-time-off/">Expense Reimbursement</a></strong>.
+    </p>
+  </div>
+</HelpLayout>
