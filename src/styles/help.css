@@ -46,6 +46,14 @@ header.page {
   margin: 0;
 }
 
+/* The lead carries no bottom margin because what usually follows it is an
+   <Annotated>, which brings its own 16px. A bare phone screenshot has no
+   margin of its own, so it would otherwise sit flush against the text —
+   match the gap the annotated screenshots leave. */
+.screen__lead + .phone {
+  margin-top: 16px;
+}
+
 /* Requirements list (download page). */
 .reqs {
   list-style: none;

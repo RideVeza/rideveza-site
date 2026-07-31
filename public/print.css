@@ -156,11 +156,22 @@
 
   /* The lead paragraph belongs to what follows it, not to what came before —
      this is what keeps a section intact on the static guides, which have no
-     wrapping element to hang break-inside on. */
+     wrapping element to hang break-inside on. .part__lead matters most: a
+     part heading and its lead introduce several sections, so without this
+     they strand together at the foot of a page while the first screen they
+     introduce starts on the next one. */
+  /* They also stay whole. These leads run to two or three lines, and a
+     two-line paragraph can never satisfy orphans/widows of 3, so the browser
+     drops the constraint and splits it anyway — leaving a heading and half a
+     sentence at the foot of one page and the last word at the top of the
+     next. break-inside is the rule that actually holds them together. */
   .screen__lead,
-  .section-lead {
+  .section-lead,
+  .part__lead {
     break-after: avoid;
     page-break-after: avoid;
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   p, li { orphans: 3; widows: 3; }
