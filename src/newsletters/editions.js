@@ -9,6 +9,7 @@
 //
 // slug MUST match the filename (without .html). It becomes the URL: /newsletters/<slug>.
 export const editions = [
+  { slug: "2026-08-17", title: "Week of August 17, 2026" },
   { slug: "2026-08-10", title: "Week of August 10, 2026" },
   { slug: "2026-08-03", title: "Week of August 3, 2026" },
   { slug: "2026-07-27", title: "Week of July 27, 2026" },
