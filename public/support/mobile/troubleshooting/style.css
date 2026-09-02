@@ -349,6 +349,10 @@ header.page {
 /* Info callout — appearance from /veza-ui.css; troubleshooting adds space above. */
 .note { margin-top: 40px; }
 
+/* An intro note sits between the summary and the steps: match the summary's rhythm. */
+.summary + .note { margin-top: 32px; }
+.note + .steps { margin-top: 32px; }
+
 /* Small caveat line inside a step. */
 .step .hint {
   margin: 0;
