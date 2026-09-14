@@ -29,14 +29,19 @@
     </a>
 
     <div class="hero__visual" data-reveal style="transition-delay: 0.28s">
-      <img
-        src="/images/hero-large.png"
-        alt="The Veza dispatcher dashboard showing routes, runs and real-time updates"
-        width="2880"
-        height="2152"
-        loading="eager"
-        fetchpriority="high"
-      />
+      <!-- AVIF (Safari 16.4+), then WebP (Safari 14+), then PNG. All three must exist. -->
+      <picture>
+        <source srcset="/images/hero-large.avif" type="image/avif" />
+        <source srcset="/images/hero-large.webp" type="image/webp" />
+        <img
+          src="/images/hero-large.png"
+          alt="The Veza dispatcher dashboard showing routes, runs and real-time updates"
+          width="2880"
+          height="2152"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </picture>
     </div>
   </div>
 </section>

@@ -8,7 +8,10 @@ import Layout from "../layouts/Layout.astro";
   footer={false}
 >
   <section class="support">
-    <img class="support__bg" src="/images/support-bg.jpg" alt="" aria-hidden="true" />
+    <picture>
+      <source srcset="/images/support-bg.webp" type="image/webp" />
+      <img class="support__bg" src="/images/support-bg.jpg" alt="" aria-hidden="true" />
+    </picture>
     <div class="support__card">
       <p class="support__text">
         For enquiries or requests for support,<br />please email

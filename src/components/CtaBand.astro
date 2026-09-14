@@ -26,13 +26,17 @@
       </a>
 
       <div class="cta__visual" data-reveal style="transition-delay: 0.21s">
-        <img
-          src="/images/feature-wide.png"
-          alt="Veza platform across desktop and mobile, keeping every trip connected"
-          width="2356"
-          height="1480"
-          loading="lazy"
-        />
+        <picture>
+          <source srcset="/images/feature-wide.avif" type="image/avif" />
+          <source srcset="/images/feature-wide.webp" type="image/webp" />
+          <img
+            src="/images/feature-wide.png"
+            alt="Veza platform across desktop and mobile, keeping every trip connected"
+            width="2356"
+            height="1480"
+            loading="lazy"
+          />
+        </picture>
       </div>
     </div>
   </div>
